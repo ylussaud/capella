@@ -59,6 +59,7 @@ import org.polarsys.capella.common.helpers.LogExt2;
 import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.ReportMarkerResolution;
+import org.polarsys.capella.common.ui.ImageExt2;
 
 class MarkerViewColumns {
 
@@ -493,9 +494,9 @@ class MarkerViewColumns {
               }
               
               if (hasAtLeastOneMultipleMarkerResolution(marker, resolutions)) {
-                return MarkerViewPlugin.getDefault().getImage("quickfixAll-repository.png"); //$NON-NLS-1$
+                return ImageExt2.getImage(FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), "quickfixAll-repository.png"); //$NON-NLS-1$
               }
-              return MarkerViewPlugin.getDefault().getImage("quickfix.gif"); //$NON-NLS-1$
+              return ImageExt2.getImage(FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), "quickfix.gif"); //$NON-NLS-1$
             }
           }
           return null;

@@ -12,6 +12,8 @@ package org.polarsys.capella.common.ui.massactions.core.shared.helper;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.graphics.Image;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator;
 import org.polarsys.capella.core.ui.semantic.browser.IImageKeys;
 import org.polarsys.kitalpha.massactions.core.helper.EObjectImageProvider;
@@ -35,6 +37,6 @@ public class SemanticBrowserImageProvider extends EObjectImageProvider {
       return super.getImage(object);
     }
 
-    return CapellaBrowserActivator.getDefault().getImage(IImageKeys.IMG_PRIMITIVE_VARIABLES);
+    return ImageExt2.getImage(FrameworkUtil.getBundle(CapellaBrowserActivator.class).getSymbolicName(), IImageKeys.IMG_PRIMITIVE_VARIABLES);
   }
 }

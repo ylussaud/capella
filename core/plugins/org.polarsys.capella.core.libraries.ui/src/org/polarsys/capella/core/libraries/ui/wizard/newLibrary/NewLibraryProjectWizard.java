@@ -13,6 +13,8 @@ package org.polarsys.capella.core.libraries.ui.wizard.newLibrary;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbench;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.libraries.ui.Activator;
 import org.polarsys.capella.core.platform.sirius.ui.project.NewProjectWizard;
 import org.polarsys.capella.core.platform.sirius.ui.project.internal.WizardNewProjectCreationPage;
@@ -30,7 +32,7 @@ public class NewLibraryProjectWizard extends NewProjectWizard {
   public void init(IWorkbench workbench, IStructuredSelection currentSelection) {
     super.init(workbench, currentSelection);
     setWindowTitle("New Capella Library"); //$NON-NLS-1$
-    ImageDescriptor descriptor = Activator.getDefault().getImageDescriptor("libraryWizard.png"); //$NON-NLS-1$
+    ImageDescriptor descriptor = ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(Activator.class).getSymbolicName(), "libraryWizard.png"); //$NON-NLS-1$
     if (null == descriptor) {
       descriptor = ImageDescriptor.getMissingImageDescriptor();
     }

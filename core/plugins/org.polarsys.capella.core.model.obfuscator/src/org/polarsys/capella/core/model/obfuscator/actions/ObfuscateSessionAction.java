@@ -32,6 +32,7 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.model.obfuscator.CapellaModelObfuscatorActivator;
 import org.polarsys.capella.core.model.obfuscator.IImageKeys;
 import org.polarsys.capella.core.model.obfuscator.IResourceObfuscator;
@@ -52,7 +53,7 @@ public class ObfuscateSessionAction extends BaseSelectionListenerAction {
    */
   public ObfuscateSessionAction() {
     super(Messages.ObfuscateModelAction_Title);
-    setImageDescriptor(CapellaModelObfuscatorActivator.getDefault().getImageDescriptor(IImageKeys.IMG_OBFUSCATE_MODEL));
+    setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaModelObfuscatorActivator.class).getSymbolicName(), IImageKeys.IMG_OBFUSCATE_MODEL));
   }
 
   @Override

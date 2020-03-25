@@ -22,6 +22,8 @@ import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ILightweightLabelDecorator;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaDeleteAction;
 import org.polarsys.kitalpha.emde.model.Element;
@@ -54,7 +56,7 @@ public class ProtectedElementsDecorator implements ILabelDecorator, ILightweight
   @Override
   public void decorate(Object element, IDecoration decoration) {
     if (isProtected(element)) {
-      decoration.addOverlay(CapellaActionsActivator.getDefault().getImageDescriptor("lock.png"));
+      decoration.addOverlay(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaActionsActivator.class).getSymbolicName(), "lock.png"));
     }
   }
 
@@ -93,7 +95,7 @@ public class ProtectedElementsDecorator implements ILabelDecorator, ILightweight
       if (manager == null) {
         manager = new LocalResourceManager(JFaceResources.getResources(PlatformUI.getWorkbench().getDisplay()));
       }
-      ImageDescriptor overlay = CapellaActionsActivator.getDefault().getImageDescriptor("lock.png");
+      ImageDescriptor overlay = ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaActionsActivator.class).getSymbolicName(), "lock.png");
       DecorationOverlayIcon icon = new DecorationOverlayIcon(image, overlay, IDecoration.BOTTOM_LEFT);
       return manager.createImage(icon);
     }

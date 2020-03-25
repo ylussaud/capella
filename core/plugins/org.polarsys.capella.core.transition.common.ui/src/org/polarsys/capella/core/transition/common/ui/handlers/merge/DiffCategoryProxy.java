@@ -18,6 +18,8 @@ import org.eclipse.emf.diffmerge.ui.viewers.IDifferenceCategorySet;
 import org.eclipse.emf.diffmerge.ui.viewers.categories.AbstractDifferenceCategory;
 import org.eclipse.emf.diffmerge.ui.viewers.categories.AbstractDifferenceCategoryItem;
 import org.eclipse.swt.graphics.Image;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.transition.common.handlers.merge.ICategoryItem;
 
 public class DiffCategoryProxy extends AbstractDifferenceCategoryItem implements IDifferenceCategory {

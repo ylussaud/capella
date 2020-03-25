@@ -28,9 +28,11 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.data.information.datavalue.DatavalueFactory;
 import org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue;
 import org.polarsys.capella.core.model.utils.EObjectExt2;
@@ -129,13 +131,13 @@ public class BrowseSemanticField extends AbstractSemanticField {
 	protected void createShortcutButton(Composite parent, int cardType) {
 		Image image = null;
 		switch (cardType) {
-		case 0: image = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MIN_CARD_ID);			
+		case 0: image = ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIPropertiesPlugin.class).getSymbolicName(), IImageKeys.QUICK_EDIT_MIN_CARD_ID);			
 		break;
-		case 1: image = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MAX_CARD_ID);			
+		case 1: image = ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIPropertiesPlugin.class).getSymbolicName(), IImageKeys.QUICK_EDIT_MAX_CARD_ID);			
 		break;
-		case 2: image = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MIN_LENGTH_ID);			
+		case 2: image = ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIPropertiesPlugin.class).getSymbolicName(), IImageKeys.QUICK_EDIT_MIN_LENGTH_ID);			
 		break;
-		case 3: image = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MAX_LENGTH_ID);			
+		case 3: image = ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIPropertiesPlugin.class).getSymbolicName(), IImageKeys.QUICK_EDIT_MAX_LENGTH_ID);			
 		break;
 		default:
 			break;
@@ -149,34 +151,34 @@ public class BrowseSemanticField extends AbstractSemanticField {
 			if(cardType == 0){
 				menuitem1 = new MenuItem(menu, SWT.NONE);
 				menuitem1.setText("0");
-				Image imageMenuItem1 = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MIN_LENGTH_ID);
+				Image imageMenuItem1 = ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIPropertiesPlugin.class).getSymbolicName(), IImageKeys.QUICK_EDIT_MIN_LENGTH_ID);
 				menuitem1.setImage(imageMenuItem1);
 				menuitem2 = new MenuItem(menu, SWT.NONE);
 				menuitem2.setText("1");
-				Image imageMenuItem2 = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.ONE_ID);
+				Image imageMenuItem2 = ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIPropertiesPlugin.class).getSymbolicName(), IImageKeys.ONE_ID);
 				menuitem2.setImage(imageMenuItem2);
 			}else if(cardType == 1){
 
 				menuitem1 = new MenuItem(menu, SWT.NONE);
 				menuitem1.setText("1");
-				Image imageMenuItem1 = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.ONE_ID);
+				Image imageMenuItem1 = ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIPropertiesPlugin.class).getSymbolicName(), IImageKeys.ONE_ID);
 				menuitem1.setImage(imageMenuItem1);
 				menuitem2 = new MenuItem(menu, SWT.NONE);
 				menuitem2.setText("*");
-				Image imageMenuItem2 = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MAX_LENGTH_ID);
+				Image imageMenuItem2 = ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIPropertiesPlugin.class).getSymbolicName(), IImageKeys.QUICK_EDIT_MAX_LENGTH_ID);
 				menuitem2.setImage(imageMenuItem2);
 
 			}else if(cardType == 2){
 
 				menuitem1 = new MenuItem(menu, SWT.NONE);
 				menuitem1.setText("0");
-				Image imageMenuItem1 = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MIN_LENGTH_ID);
+				Image imageMenuItem1 = ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIPropertiesPlugin.class).getSymbolicName(), IImageKeys.QUICK_EDIT_MIN_LENGTH_ID);
 				menuitem1.setImage(imageMenuItem1);
 			}else if(cardType == 3){
 
 				menuitem1 = new MenuItem(menu, SWT.NONE);
 				menuitem1.setText("*");
-				Image imageMenuItem1 = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MAX_LENGTH_ID);
+				Image imageMenuItem1 = ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIPropertiesPlugin.class).getSymbolicName(), IImageKeys.QUICK_EDIT_MAX_LENGTH_ID);
 				menuitem1.setImage(imageMenuItem1);
 			}
 

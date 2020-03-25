@@ -28,7 +28,9 @@ import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipse.ui.menus.IWorkbenchContribution;
 import org.eclipse.ui.services.IServiceLocator;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
@@ -123,7 +125,7 @@ public class GotoRelatedElementsHandler extends CompoundContributionItem impleme
   @Override
   public void fill(Menu menu_p, int index_p) {
     super.fill(menu_p, index_p);
-    menu_p.getParentItem().setImage(CapellaNavigatorPlugin.getDefault().getImage(IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER));
+    menu_p.getParentItem().setImage(ImageExt2.getImage(FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER));
   }
 
   /**

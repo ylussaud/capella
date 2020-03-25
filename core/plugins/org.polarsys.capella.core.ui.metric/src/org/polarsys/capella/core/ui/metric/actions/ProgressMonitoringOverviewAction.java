@@ -23,6 +23,8 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.ui.metric.IImageKeys;
 import org.polarsys.capella.core.ui.metric.MetricActivator;
@@ -36,7 +38,7 @@ public class ProgressMonitoringOverviewAction extends BaseSelectionListenerActio
    */
   public ProgressMonitoringOverviewAction() {
     super(MetricMessages.progressMonitoring_overviewAction_lbl);
-    setImageDescriptor(MetricActivator.getDefault().getImageDescriptor(IImageKeys.IMG_METRICS));
+    setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(MetricActivator.class).getSymbolicName(), IImageKeys.IMG_METRICS));
   }
 
   /**

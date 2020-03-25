@@ -14,7 +14,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ui.services.AbstractUIActivator;
 import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionUtil;
 
@@ -79,6 +79,6 @@ public class LCDWizardPlugin extends AbstractUIActivator {
   }
 
   private ImageDescriptor getIcon(String filename) {
-    return AbstractUIPlugin.imageDescriptorFromPlugin(getPluginId(), "icons/" + filename); //$NON-NLS-1$
+    return AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(getClass()).getSymbolicName(), "icons/" + filename); //$NON-NLS-1$
   }
 }

@@ -16,9 +16,10 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-
-import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
 /**
@@ -60,7 +61,7 @@ public class SelectInProjectExplorerAction extends Action {
    */
   @Override
   public ImageDescriptor getImageDescriptor() {
-    return CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER);
+    return ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER);
   }
 
   /**

@@ -28,7 +28,8 @@ import org.eclipse.ui.navigator.CommonActionProvider;
 import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 import org.eclipse.ui.navigator.ICommonViewerSite;
 import org.eclipse.ui.navigator.ICommonViewerWorkbenchSite;
-
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaValidateAction;
 import org.polarsys.capella.core.validation.ui.CapellaValidationUIActivator;
@@ -129,7 +130,7 @@ public class ValidationActionProvider extends CommonActionProvider {
    */
   public ValidateAction createDefaultValidation() {
 
-    imageDescriptor = CapellaValidationUIActivator.getDefault().getImageDescriptor(CapellaValidationUIActivator.IMG_ENABLED_VALIDATE);
+    imageDescriptor = ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaValidationUIActivator.class).getSymbolicName(), CapellaValidationUIActivator.IMG_ENABLED_VALIDATE);
 
     ISelectionProvider selectionProvider = commonViewSite.getSelectionProvider();
     CapellaValidateAction validationAction = new CapellaValidateAction();
@@ -165,7 +166,7 @@ public class ValidationActionProvider extends CommonActionProvider {
         menuManager.add(action);
       }
     } else {
-      imageDescriptor = CapellaValidationUIActivator.getDefault().getImageDescriptor(CapellaValidationUIActivator.IMG_ENABLED_VALIDATE);
+      imageDescriptor = ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaValidationUIActivator.class).getSymbolicName(), CapellaValidationUIActivator.IMG_ENABLED_VALIDATE);
       userValidationActions = new ArrayList<ValidateAction>();
       menu.prependToGroup("group.validation", defaultValidationAction); //$NON-NLS-1$
 
@@ -177,7 +178,7 @@ public class ValidationActionProvider extends CommonActionProvider {
    */
   private void initActions() {
     ISelectionProvider selectionProvider = commonViewSite.getSelectionProvider();
-    imageDescriptor = CapellaValidationUIActivator.getDefault().getImageDescriptor(CapellaValidationUIActivator.IMG_ENABLED_VALIDATE);
+    imageDescriptor = ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaValidationUIActivator.class).getSymbolicName(), CapellaValidationUIActivator.IMG_ENABLED_VALIDATE);
     userValidationActions = new ArrayList<ValidateAction>();
     defaultValidationAction = createDefaultValidation();// ValidationAction(false, null, selectionProvider, imageDescriptor);
     for (IFile file : PreferencesHelper.retrieveUserDefinedPreferenceFiles(selectionProvider, EPFValidationAction.EPF_EXTNAME)) {

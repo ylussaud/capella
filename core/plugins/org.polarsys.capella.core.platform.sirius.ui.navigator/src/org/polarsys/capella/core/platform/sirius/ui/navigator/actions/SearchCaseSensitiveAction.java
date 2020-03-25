@@ -12,6 +12,8 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.ui.IPropertyListener;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
@@ -22,7 +24,7 @@ public class SearchCaseSensitiveAction extends Action implements IPropertyListen
   public SearchCaseSensitiveAction(CapellaCommonNavigator navigator) {
     super(Messages.SearchOptions_Case_Titlte);
     setToolTipText(Messages.SearchOptions_Case_Tooltip);
-    setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("SearchCaseSensitive.png"));
+    setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), "SearchCaseSensitive.png"));
 
     this.navigator = navigator;
     setChecked(navigator.isSearchCaseSensitiveEnabled());

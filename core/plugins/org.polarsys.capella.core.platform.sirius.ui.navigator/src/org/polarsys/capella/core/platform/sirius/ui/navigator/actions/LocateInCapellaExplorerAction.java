@@ -28,7 +28,9 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.IShowInTarget;
 import org.eclipse.ui.part.ShowInContext;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.utils.NamingHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
@@ -71,7 +73,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
       action.setImageDescriptor(
           ExtendedImageRegistry.getInstance().getImageDescriptor(EObjectLabelProviderHelper.getImage(referenced)));
     } else {
-      action.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("capella_16.png"));
+      action.setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), "capella_16.png"));
     }
     action.setText(NLS.bind(message, NamingHelper.getDefaultTitle(referenced)));
     return action;

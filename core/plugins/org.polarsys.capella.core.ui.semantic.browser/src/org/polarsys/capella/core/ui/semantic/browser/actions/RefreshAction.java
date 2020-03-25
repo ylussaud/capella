@@ -12,6 +12,8 @@ package org.polarsys.capella.core.ui.semantic.browser.actions;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart;
 import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator;
 import org.polarsys.capella.core.ui.semantic.browser.IImageKeys;
@@ -27,7 +29,7 @@ public class RefreshAction extends Action {
   public RefreshAction(ISemanticBrowserViewPart semanticBrowserViewPart, int type) {
     super(null, type);
     this.semanticBrowserViewPart = semanticBrowserViewPart;
-    setImageDescriptor(CapellaBrowserActivator.getDefault().getImageDescriptor(IImageKeys.IMG_REFRESH));
+    setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaBrowserActivator.class).getSymbolicName(), IImageKeys.IMG_REFRESH));
   }
 
   @Override

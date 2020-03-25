@@ -12,6 +12,8 @@ package org.polarsys.capella.core.ui.semantic.browser.actions;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart;
 import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator;
 import org.polarsys.capella.core.ui.semantic.browser.IImageKeys;
@@ -26,7 +28,7 @@ public class LimitateTreeExpansionAction extends Action {
     this.semanticBrowserViewPart = semanticBrowserViewPart;
     setChecked(semanticBrowserViewPart.getModel().doesLimitateTreeExpansion());
     setToolTipText(Messages.SemanticBrowserView_LimitateTreeExpansionAction_Tooltip);
-    setImageDescriptor(CapellaBrowserActivator.getDefault().getImageDescriptor(IImageKeys.IMG_COLLAPSE_CATEGORIES));
+    setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaBrowserActivator.class).getSymbolicName(), IImageKeys.IMG_COLLAPSE_CATEGORIES));
   }
 
   @Override

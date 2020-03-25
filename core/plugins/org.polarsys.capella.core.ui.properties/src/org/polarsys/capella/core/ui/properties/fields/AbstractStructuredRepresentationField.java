@@ -31,6 +31,8 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.properties.IImageKeys;
 import org.polarsys.capella.core.ui.properties.viewers.IDelegatedViewer;
@@ -75,7 +77,7 @@ public abstract class AbstractStructuredRepresentationField extends AbstractSema
 
     createCustomActions(parent);
 
-    _deleteBtn = createTableButton(parent, CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.IMG_DELETE_BUTTON), new Runnable() {
+    _deleteBtn = createTableButton(parent, ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIPropertiesPlugin.class).getSymbolicName(), IImageKeys.IMG_DELETE_BUTTON), new Runnable() {
       public void run() {
         handleDelete();
       }

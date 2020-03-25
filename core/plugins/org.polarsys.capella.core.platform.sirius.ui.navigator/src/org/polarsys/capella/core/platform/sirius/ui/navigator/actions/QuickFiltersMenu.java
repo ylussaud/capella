@@ -18,6 +18,8 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.ui.navigator.ICommonFilterDescriptor;
 import org.eclipse.ui.navigator.INavigatorContentService;
 import org.eclipse.ui.navigator.INavigatorFilterService;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
@@ -31,7 +33,7 @@ public class QuickFiltersMenu extends MenuManager {
 
   public QuickFiltersMenu(CapellaCommonNavigator navigator) {
     super(Messages.QuickFiltersMenu_Title);
-    setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("QuickFiltersMenu.png"));
+    setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), "QuickFiltersMenu.png"));
 
     this.navigator = navigator;
     INavigatorContentService capellaNavigatorContentService = navigator.getNavigatorContentService();

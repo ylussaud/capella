@@ -56,6 +56,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.data.core.properties.sections.NamedElementSection;
 import org.polarsys.capella.core.data.information.datavalue.OpaqueExpression;
 import org.polarsys.capella.core.linkedtext.ui.CapellaEmbeddedLinkedTextEditor;
@@ -328,12 +330,12 @@ public class OpaqueExpressionSection extends NamedElementSection {
     
     
     final Button down = getWidgetFactory().createButton(opaqueExpressionGroup, null, SWT.PUSH);
-    down.setImage(CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.IMG_ARROW_DOWN));
+    down.setImage(ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIPropertiesPlugin.class).getSymbolicName(), IImageKeys.IMG_ARROW_DOWN));
     data = new GridData(30, SWT.DEFAULT);
     down.setLayoutData(data);
     
     final Button up = getWidgetFactory().createButton(opaqueExpressionGroup, null, SWT.PUSH);
-    up.setImage(CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.IMG_ARROW_UP));
+    up.setImage(ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIPropertiesPlugin.class).getSymbolicName(), IImageKeys.IMG_ARROW_UP));
     data = new GridData(30, SWT.DEFAULT);
     up.setLayoutData(data);
 

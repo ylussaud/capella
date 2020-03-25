@@ -22,8 +22,10 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
@@ -110,7 +112,7 @@ public class StateTransitionTriggerField extends ContainmentTableField {
   @SuppressWarnings("synthetic-access")
   protected void createCustomActions(Composite parent) {
 
-    _timeEventBtn = createTableButton(parent, CommonPropertiesPlugin.getDefault().getImage(IImageKeys.TIME_EVENT_IMG_16), new Runnable() {
+    _timeEventBtn = createTableButton(parent, ImageExt2.getImage(FrameworkUtil.getBundle(CommonPropertiesPlugin.class).getSymbolicName(), IImageKeys.TIME_EVENT_IMG_16), new Runnable() {
       @Override
       public void run() {
         handleStateEventButtonClick(CapellacommonPackage.Literals.TIME_EVENT);
@@ -118,7 +120,7 @@ public class StateTransitionTriggerField extends ContainmentTableField {
     });
     _timeEventBtn.setToolTipText("Create a Time Event");
 
-    _changeEventBtn = createTableButton(parent, CommonPropertiesPlugin.getDefault().getImage(IImageKeys.CHANGE_EVENT_IMG_16), new Runnable() {
+    _changeEventBtn = createTableButton(parent, ImageExt2.getImage(FrameworkUtil.getBundle(CommonPropertiesPlugin.class).getSymbolicName(), IImageKeys.CHANGE_EVENT_IMG_16), new Runnable() {
       @Override
       public void run() {
         handleStateEventButtonClick(CapellacommonPackage.Literals.CHANGE_EVENT);

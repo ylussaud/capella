@@ -37,8 +37,10 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.wizards.newresource.BasicNewResourceWizard;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.ProjectApproach;
 import org.polarsys.capella.core.platform.sirius.ui.project.internal.CapellaProjectContentsLocationArea;
@@ -190,7 +192,7 @@ public class NewProjectWizard extends BasicNewResourceWizard {
   public void init(IWorkbench workbench, IStructuredSelection currentSelection) {
     super.init(workbench, currentSelection);
     setWindowTitle(Messages.getString("NewProjectWizard.window.title")); //$NON-NLS-1$
-    ImageDescriptor descriptor = CapellaProjectActivator.getDefault().getImageDescriptor("projectWizard.png"); //$NON-NLS-1$
+    ImageDescriptor descriptor = ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaProjectActivator.class).getSymbolicName(), "projectWizard.png"); //$NON-NLS-1$
     if (null == descriptor) {
       descriptor = ImageDescriptor.getMissingImageDescriptor();
     }

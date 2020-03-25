@@ -12,8 +12,10 @@ package org.polarsys.capella.common.flexibility.wizards.ui.util;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.swt.widgets.Label;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.flexibility.wizards.Activator;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.ImageExt2;
 
 public class StatusLabelHelper {
 
@@ -23,16 +25,16 @@ public class StatusLabelHelper {
   public static void updateImage(IStatus status, Label label) {
     if (!label.isDisposed() && status != null) {
       if (status.isOK()) {
-        label.setImage(Activator.getDefault().getImage("full/etool16/empty.gif"));
+        label.setImage(ImageExt2.getImage(FrameworkUtil.getBundle(Activator.class).getSymbolicName(), "full/etool16/empty.gif"));
 
       } else if (status.matches(IStatus.INFO)) {
-        label.setImage(Activator.getDefault().getImage("full/etool16/info_tsk.gif"));
+        label.setImage(ImageExt2.getImage(FrameworkUtil.getBundle(Activator.class).getSymbolicName(), "full/etool16/info_tsk.gif"));
 
       } else if (status.matches(IStatus.WARNING)) {
-        label.setImage(Activator.getDefault().getImage("full/etool16/warn_tsk.gif"));
+        label.setImage(ImageExt2.getImage(FrameworkUtil.getBundle(Activator.class).getSymbolicName(), "full/etool16/warn_tsk.gif"));
 
       } else if (status.matches(IStatus.ERROR)) {
-        label.setImage(Activator.getDefault().getImage("full/etool16/error_tsk.gif"));
+        label.setImage(ImageExt2.getImage(FrameworkUtil.getBundle(Activator.class).getSymbolicName(), "full/etool16/error_tsk.gif"));
       }
     }
   }

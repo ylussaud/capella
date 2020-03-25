@@ -39,6 +39,7 @@ import org.eclipse.ui.views.markers.WorkbenchMarkerResolution;
 import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.Messages;
+import org.polarsys.capella.common.ui.ImageExt2;
 
 /**
  */
@@ -97,7 +98,7 @@ public class QuickfixHandler extends AbstractDynamicContributionItem {
     }
 
     if (items.size() > 0) {
-      ImageDescriptor image = MarkerViewPlugin.getDefault().getImageDescriptor(menuImage);
+      ImageDescriptor image = ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), menuImage);
       String text = Messages.MarkerView_Quickfix_Command_Name;
       MenuManager manager = new MenuManager(text, image, menuId);
       for (IContributionItem item : items) {

@@ -48,11 +48,11 @@ public class BqLabelProvider extends MDEAdapterFactoryLabelProvider {
   @Override
   public Image getImage(Object object) {
     if (object instanceof IFile) {
-      return TestBusinessQueriesPlugin.getDefault().getImage("full/obj16/test.png");
+      return ImageExt2.getImage(FrameworkUtil.getBundle(TestBusinessQueriesPlugin.class).getSymbolicName(), "full/obj16/test.png");
     }
     if (object instanceof QueryResult) {
       if (((QueryResult) object).getBusinessQuery() == null) {
-        return TestBusinessQueriesPlugin.getDefault().getImage("full/obj16/error_tsk.png");
+        return ImageExt2.getImage(FrameworkUtil.getBundle(TestBusinessQueriesPlugin.class).getSymbolicName(), "full/obj16/error_tsk.png");
       }
       EObject adapt = Adapters.adapt(object, Element.class);
       if (adapt != null) {
@@ -60,10 +60,10 @@ public class BqLabelProvider extends MDEAdapterFactoryLabelProvider {
       }
     } else if (object instanceof ResultItem) {
       if (((ResultItem)object).getKind() == Kind.ADDED) {
-        return TestBusinessQueriesPlugin.getDefault().getImage("full/obj16/add_obj.png");
+        return ImageExt2.getImage(FrameworkUtil.getBundle(TestBusinessQueriesPlugin.class).getSymbolicName(), "full/obj16/add_obj.png");
       }
       if (((ResultItem)object).getKind() == Kind.MISSING) {
-        return TestBusinessQueriesPlugin.getDefault().getImage("full/obj16/delete_edit.png");
+        return ImageExt2.getImage(FrameworkUtil.getBundle(TestBusinessQueriesPlugin.class).getSymbolicName(), "full/obj16/delete_edit.png");
       }
       EObject adapt = Adapters.adapt(object, Element.class);
       if (adapt != null) {

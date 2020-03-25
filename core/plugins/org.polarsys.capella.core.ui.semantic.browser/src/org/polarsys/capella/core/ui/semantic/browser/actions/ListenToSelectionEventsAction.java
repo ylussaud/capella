@@ -11,6 +11,8 @@
 package org.polarsys.capella.core.ui.semantic.browser.actions;
 
 import org.eclipse.jface.action.IAction;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart;
 import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator;
 import org.polarsys.capella.core.ui.semantic.browser.IImageKeys;
@@ -24,7 +26,7 @@ public class ListenToSelectionEventsAction extends RefreshAction {
     setText(Messages.SemanticBrowserView_ListeningToPageSelectionEventsAction_Title);
     setToolTipText(Messages.SemanticBrowserView_ListeningToPageSelectionEventsAction_Tooltip);
     setImageDescriptor(
-        CapellaBrowserActivator.getDefault().getImageDescriptor(IImageKeys.IMG_LISTENING_TO_PAGE_SELECTION_EVENTS));
+        ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaBrowserActivator.class).getSymbolicName(), IImageKeys.IMG_LISTENING_TO_PAGE_SELECTION_EVENTS));
     setChecked(isChecked);
   }
 

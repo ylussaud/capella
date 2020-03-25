@@ -43,10 +43,12 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.model.IWorkbenchAdapter;
 import org.eclipse.ui.navigator.IDescriptionProvider;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.model.copypaste.SharedCutPasteClipboard;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
@@ -93,12 +95,12 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
     } else if (object instanceof ItemDecorator) {
       image = ((ItemDecorator) object).getImage();
     } else if (object instanceof ViewpointItem) {
-      image = CapellaNavigatorPlugin.getDefault().getImage(IImageKeys.IMG_VIEWPOINT);
+      image = ImageExt2.getImage(FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), IImageKeys.IMG_VIEWPOINT);
     } else if (object instanceof RepresentationDescriptionItem) {
       RepresentationDescriptionItem descriptionItem = (RepresentationDescriptionItem) object;
       // Filter out scenario diagram to keep the nice image.
       if (!(descriptionItem.getWrappedObject() instanceof SequenceDiagramDescription)) {
-        image = CapellaNavigatorPlugin.getDefault().getImage(IImageKeys.IMG_DIAGRAM_TYPE);
+        image = ImageExt2.getImage(FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), IImageKeys.IMG_DIAGRAM_TYPE);
       } else {
         image = super.getImage(((ItemWrapper) object).getWrappedObject());
       }

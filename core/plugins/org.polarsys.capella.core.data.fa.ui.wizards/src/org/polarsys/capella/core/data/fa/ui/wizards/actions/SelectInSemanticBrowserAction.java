@@ -17,6 +17,8 @@ import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 import org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView;
@@ -62,7 +64,7 @@ public class SelectInSemanticBrowserAction extends Action {
    */
   @Override
   public ImageDescriptor getImageDescriptor() {
-    return CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER);
+    return ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER);
   }
 
   /**

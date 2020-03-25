@@ -13,6 +13,8 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.ui.internal.navigator.NavigatorFilterService;
 import org.eclipse.ui.navigator.INavigatorContentService;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
@@ -26,7 +28,7 @@ public class SearchMenu extends MenuManager {
   public SearchMenu(CapellaCommonNavigator navigator) {
     super(Messages.SearchOptions_Menu_Title);
 
-    setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("search.gif")); //$NON-NLS-1$
+    setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), "search.gif")); //$NON-NLS-1$
     this.navigator = navigator;
     INavigatorContentService capellaNavigatorContentService = navigator.getNavigatorContentService();
     capellaNavigatorFilterService = (NavigatorFilterService) capellaNavigatorContentService.getFilterService();

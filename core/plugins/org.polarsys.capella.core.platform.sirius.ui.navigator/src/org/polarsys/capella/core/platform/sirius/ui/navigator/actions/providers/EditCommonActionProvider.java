@@ -25,6 +25,8 @@ import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 import org.eclipse.ui.navigator.ICommonMenuConstants;
 import org.eclipse.ui.navigator.ICommonViewerSite;
 import org.eclipse.ui.navigator.ICommonViewerWorkbenchSite;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaCopyAction;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaCutAction;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaDeleteAction;
@@ -206,16 +208,16 @@ public class EditCommonActionProvider extends CommonActionProvider {
     SelectionHelper.registerToSelectionChanges(moveDown, selectionProvider);
 
     sortContent = new SortContentAction();
-    sortContent.setImageDescriptor(CapellaUIResourcesPlugin.getDefault().getImageDescriptor(
+    sortContent.setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaUIResourcesPlugin.class).getSymbolicName(), 
         org.polarsys.capella.core.ui.resources.IImageKeys.CAPELLA_SORT_IMG_16));
-    sortContent.setDisabledImageDescriptor(CapellaUIResourcesPlugin.getDefault().getImageDescriptor(
+    sortContent.setDisabledImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaUIResourcesPlugin.class).getSymbolicName(), 
         org.polarsys.capella.core.ui.resources.IImageKeys.CAPELLA_SORT_DISABLED_IMG_16));
     SelectionHelper.registerToSelectionChanges(sortContent, selectionProvider);
 
     sortSelection = new SortSelectionAction();
-    sortSelection.setImageDescriptor(CapellaUIResourcesPlugin.getDefault().getImageDescriptor(
+    sortSelection.setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaUIResourcesPlugin.class).getSymbolicName(), 
         org.polarsys.capella.core.ui.resources.IImageKeys.CAPELLA_SORT_IMG_16));
-    sortSelection.setDisabledImageDescriptor(CapellaUIResourcesPlugin.getDefault().getImageDescriptor(
+    sortSelection.setDisabledImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaUIResourcesPlugin.class).getSymbolicName(), 
         org.polarsys.capella.core.ui.resources.IImageKeys.CAPELLA_SORT_DISABLED_IMG_16));
     SelectionHelper.registerToSelectionChanges(sortSelection, selectionProvider);
 

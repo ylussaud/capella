@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move;
 
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 
@@ -24,8 +26,8 @@ public class MoveDownAction extends org.polarsys.capella.core.ui.toolkit.actions
    */
   public MoveDownAction() {
     super();
-    setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_ENABLED_MOVE_DOWN));
-    setDisabledImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_DISABLED_MOVE_DOWN));
+    setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), IImageKeys.IMG_ENABLED_MOVE_DOWN));
+    setDisabledImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), IImageKeys.IMG_DISABLED_MOVE_DOWN));
     setActionDefinitionId("org.polarsys.capella.core.platform.sirius.ui.navigator.moveDown"); //$NON-NLS-1$
   }
 }

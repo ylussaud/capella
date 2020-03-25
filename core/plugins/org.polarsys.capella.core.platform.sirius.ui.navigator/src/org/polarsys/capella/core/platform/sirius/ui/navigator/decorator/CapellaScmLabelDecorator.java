@@ -20,7 +20,9 @@ import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ILightweightLabelDecorator;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.team.core.RepositoryProvider;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
@@ -106,9 +108,9 @@ public class CapellaScmLabelDecorator implements ILightweightLabelDecorator {
         boolean isReadOnly = EcoreUtil2.isReadOnly(resource);
         ImageDescriptor imageDescriptor = null;
         if (isReadOnly) {
-          imageDescriptor = CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_SCM_CI);
+          imageDescriptor = ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), IImageKeys.IMG_SCM_CI);
         } else {
-          imageDescriptor = CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_SCM_CO);
+          imageDescriptor = ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), IImageKeys.IMG_SCM_CO);
         }
         decoration.addOverlay(imageDescriptor);
       }

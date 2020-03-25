@@ -22,6 +22,8 @@ import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.BrowserElementWrapper;
@@ -48,7 +50,7 @@ public class SemanticBrowserLabelProvider extends MDEAdapterFactoryLabelProvider
       return null;
     }
     // Initialize with the category image.
-    Image result = CapellaBrowserActivator.getDefault().getImage(IImageKeys.IMG_CATEGORY);
+    Image result = ImageExt2.getImage(FrameworkUtil.getBundle(CapellaBrowserActivator.class).getSymbolicName(), IImageKeys.IMG_CATEGORY);
     EObject modelElement = null;
     // Find out a model element from given element.
     if (element instanceof EObjectWrapper) {
@@ -56,7 +58,7 @@ public class SemanticBrowserLabelProvider extends MDEAdapterFactoryLabelProvider
     } else if (element instanceof EObject) {
       modelElement = (EObject) element;
     } else if (element instanceof PrimitiveWrapper) {
-      return CapellaBrowserActivator.getDefault().getImage(IImageKeys.IMG_PRIMITIVE_VARIABLES);
+      return ImageExt2.getImage(FrameworkUtil.getBundle(CapellaBrowserActivator.class).getSymbolicName(), IImageKeys.IMG_PRIMITIVE_VARIABLES);
     }
     // If a model element was found, get its image.
     if (null != modelElement) {

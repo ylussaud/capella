@@ -17,10 +17,11 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
-
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.common.ui.toolkit.editors.BasicEditorDialog;
-import org.polarsys.capella.core.ui.resources.IImageKeys;
 import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
+import org.polarsys.capella.core.ui.resources.IImageKeys;
 
 /**
  * The Capella Editor Dialog.
@@ -55,7 +56,7 @@ public class CapellaWizardDialog extends BasicEditorDialog {
    */
   public CapellaWizardDialog(Shell shell_p, IWizard content_p) {
     super(shell_p, content_p);
-    Window.setDefaultImage(CapellaUIResourcesPlugin.getDefault().getImage(IImageKeys.CAPELLA_APPLICATION_IMG_24));
+    Window.setDefaultImage(ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIResourcesPlugin.class).getSymbolicName(), IImageKeys.CAPELLA_APPLICATION_IMG_24));
   }
 
   /**

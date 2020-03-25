@@ -26,9 +26,11 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
@@ -94,17 +96,17 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
    */
   @Override
   protected void createCustomActions(Composite parent) {
-    _downBtn = createTableButton(parent, CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.IMG_ARROW_DOWN), new Runnable() {
+    _downBtn = createTableButton(parent, ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIPropertiesPlugin.class).getSymbolicName(), IImageKeys.IMG_ARROW_DOWN), new Runnable() {
       public void run() {
         handleDown();
       }
     });
-    _upBtn = createTableButton(parent, CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.IMG_ARROW_UP), new Runnable() {
+    _upBtn = createTableButton(parent, ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIPropertiesPlugin.class).getSymbolicName(), IImageKeys.IMG_ARROW_UP), new Runnable() {
       public void run() {
         handleUp();
       }
     });
-    _addBtn = createTableButton(parent, CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.IMG_ADD_BUTTON), new Runnable() {
+    _addBtn = createTableButton(parent, ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIPropertiesPlugin.class).getSymbolicName(), IImageKeys.IMG_ADD_BUTTON), new Runnable() {
       public void run() {
         handleAdd();
       }

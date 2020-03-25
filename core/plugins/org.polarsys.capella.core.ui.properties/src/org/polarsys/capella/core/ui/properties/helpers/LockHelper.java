@@ -16,9 +16,10 @@ import java.util.Map;
 import org.eclipse.jface.fieldassist.ControlDecoration;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Control;
-
-import org.polarsys.capella.core.ui.properties.IImageKeys;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
+import org.polarsys.capella.core.ui.properties.IImageKeys;
 
 /**
  */
@@ -58,7 +59,7 @@ public class LockHelper {
    */
   public void decorate(Control control) {
     ControlDecoration decoration = new ControlDecoration(control, SWT.TOP | SWT.LEFT);
-    decoration.setImage(CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.IMG_LOCK));
+    decoration.setImage(ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIPropertiesPlugin.class).getSymbolicName(), IImageKeys.IMG_LOCK));
     decoration.setDescriptionText("This field is locked"); //$NON-NLS-1$
     decoration.hide();
     getDecorationRegistry().put(control, decoration);

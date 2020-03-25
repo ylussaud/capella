@@ -36,6 +36,8 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.explorer.activity.ui.pages.AbstractCapellaPage;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
@@ -119,7 +121,7 @@ public class CapellaDiagramViewer extends DiagramViewer {
     };
 
     showInCapellaExplorerAction.setActionDefinitionId("org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"); //$NON-NLS-1$
-    showInCapellaExplorerAction.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(
+    showInCapellaExplorerAction.setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), 
         org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER));
     SelectionHelper.registerToSelectionChanges(showInCapellaExplorerAction, selectionProvider);
     contextMenuManager.add(showInCapellaExplorerAction);

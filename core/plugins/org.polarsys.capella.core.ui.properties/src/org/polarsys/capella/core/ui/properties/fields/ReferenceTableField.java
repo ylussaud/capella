@@ -19,8 +19,10 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
@@ -68,7 +70,7 @@ public class ReferenceTableField extends AbstractStructuredRepresentationField {
    */
   @Override
   protected void createCustomActions(Composite parent) {
-    _browseBtn = createTableButton(parent, CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.IMG_BROWSE_BUTTON), new Runnable() {
+    _browseBtn = createTableButton(parent, ImageExt2.getImage(FrameworkUtil.getBundle(CapellaUIPropertiesPlugin.class).getSymbolicName(), IImageKeys.IMG_BROWSE_BUTTON), new Runnable() {
       public void run() {
         handleBrowse();
       }

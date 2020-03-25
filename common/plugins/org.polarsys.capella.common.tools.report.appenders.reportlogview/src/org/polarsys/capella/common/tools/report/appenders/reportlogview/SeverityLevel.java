@@ -15,17 +15,19 @@ import org.apache.log4j.Level;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.graphics.Image;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 
 /**
  * Severity levels for the report log view (marker view)
  */
 public enum SeverityLevel {
 
-  DEBUG("Debug", MarkerViewPlugin.getDefault().getImage("debug.gif")), //$NON-NLS-1$ //$NON-NLS-2$
-  INFO("Info", MarkerViewPlugin.getDefault().getImage("inform.gif")), //$NON-NLS-1$ //$NON-NLS-2$
-  WARNING("Warning", MarkerViewPlugin.getDefault().getImage("warn.gif")), //$NON-NLS-1$ //$NON-NLS-2$
-  ERROR("Error", MarkerViewPlugin.getDefault().getImage("error.gif")), //$NON-NLS-1$ //$NON-NLS-2$
-  FATAL("Fatal", MarkerViewPlugin.getDefault().getImage("fatal.gif")); //$NON-NLS-1$ //$NON-NLS-2$
+  DEBUG("Debug", ImageExt2.getImage(FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), "debug.gif")), //$NON-NLS-1$ //$NON-NLS-2$
+  INFO("Info", ImageExt2.getImage(FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), "inform.gif")), //$NON-NLS-1$ //$NON-NLS-2$
+  WARNING("Warning", ImageExt2.getImage(FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), "warn.gif")), //$NON-NLS-1$ //$NON-NLS-2$
+  ERROR("Error", ImageExt2.getImage(FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), "error.gif")), //$NON-NLS-1$ //$NON-NLS-2$
+  FATAL("Fatal", ImageExt2.getImage(FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), "fatal.gif")); //$NON-NLS-1$ //$NON-NLS-2$
 
   SeverityLevel(String representation, Image image) {
     this.representation = representation;

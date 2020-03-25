@@ -12,6 +12,8 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.ui.IPropertyListener;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
@@ -22,7 +24,7 @@ public class SearchInDescriptionAction extends Action implements IPropertyListen
   public SearchInDescriptionAction(CapellaCommonNavigator navigator) {
     super(Messages.SearchOptions_InDesc_Title);
     setToolTipText(Messages.SearchOptions_InDesc_Tooltip);
-    setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("SearchInDescription.gif"));
+    setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaNavigatorPlugin.class).getSymbolicName(), "SearchInDescription.gif"));
     
     this.navigator = navigator;
     setChecked(navigator.isSearchInDescriptionEnabled());

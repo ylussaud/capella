@@ -27,9 +27,11 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellamodeller.ModelRoot;
@@ -59,7 +61,7 @@ public class MetricAction extends BaseSelectionListenerAction {
 
   public MetricAction() {
     super(MetricMessages.metricAction_lbl);
-    setImageDescriptor(MetricActivator.getDefault().getImageDescriptor(IImageKeys.IMG_METRICS));
+    setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(MetricActivator.class).getSymbolicName(), IImageKeys.IMG_METRICS));
   }
 
   @Override

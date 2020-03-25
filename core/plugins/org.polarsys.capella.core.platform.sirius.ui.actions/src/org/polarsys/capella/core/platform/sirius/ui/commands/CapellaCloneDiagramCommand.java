@@ -25,6 +25,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.StringHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
@@ -134,7 +135,7 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
       } catch (Exception exception) {
         CapellaActionsActivator activator = CapellaActionsActivator.getDefault();
         activator.getLog()
-            .log(new Status(IStatus.ERROR, activator.getPluginId(), "Unable to notify listeners !", exception)); //$NON-NLS-1$
+            .log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), "Unable to notify listeners !", exception)); //$NON-NLS-1$
       }
     }
   }
