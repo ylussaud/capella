@@ -19,6 +19,7 @@ import org.eclipse.core.commands.NotHandledException;
 import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.validation.preferences.EMFModelValidationPreferences;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.eclipse.jface.viewers.ISelection;
@@ -29,9 +30,9 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.handlers.IHandlerService;
-
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.helpers.LogExt2;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
-import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin;
 
 /**
  * Disable a constraint and delete all markers associated to this constraint.
@@ -49,11 +50,11 @@ public class DisableConstraintHandler extends AbstractHandler {
     try {
       service.executeCommand(DeleteConstraintMarkersHandler.COMMAND_ID, null);
     } catch (NotDefinedException exception) {
-      MarkerViewPlugin.getDefault().log(IStatus.ERROR, exception.getMessage(), exception);
+      LogExt2.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(),  exception.getMessage(), exception));
     } catch (NotEnabledException exception) {
-      MarkerViewPlugin.getDefault().log(IStatus.ERROR, exception.getMessage(), exception);
+      LogExt2.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(),  exception.getMessage(), exception));
     } catch (NotHandledException exception) {
-      MarkerViewPlugin.getDefault().log(IStatus.ERROR, exception.getMessage(), exception);
+      LogExt2.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(),  exception.getMessage(), exception));
     }
 
     IConstraintDescriptor descriptor = getConstraintDescriptor(HandlerUtil.getCurrentSelection(event));

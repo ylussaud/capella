@@ -13,10 +13,11 @@ package org.polarsys.capella.core.validation.ui.ide.quickfix;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
-
-import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
+import org.eclipse.core.runtime.Status;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.ICommand;
+import org.polarsys.capella.common.helpers.LogExt2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
@@ -57,7 +58,7 @@ public class CommandMarkerResolution extends AbstractCapellaMarkerResolution {
       try {
         marker.delete();
       } catch (CoreException e){
-        PluginActivator.getDefault().log(IStatus.ERROR, e.getLocalizedMessage(), e);
+        LogExt2.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(),  e.getLocalizedMessage(), e));
       }
     }
   }

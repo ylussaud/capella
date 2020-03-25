@@ -42,6 +42,7 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
 import org.polarsys.capella.common.helpers.LogExt2;
@@ -166,7 +167,7 @@ public class EPFValidationAction extends CapellaValidateAction {
         restoreOldPreference();
         
       } catch (PartInitException e) {
-        CapellaValidationUIActivator.getDefault().log(IStatus.ERROR, e.getMessage(), e);
+        LogExt2.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(),  e.getMessage(), e));
       }
 
     } finally {
@@ -178,7 +179,7 @@ public class EPFValidationAction extends CapellaValidateAction {
     try {
       PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(MarkerView.VIEW_ID);
     } catch (PartInitException e) {
-      CapellaValidationUIActivator.getDefault().log(IStatus.ERROR, e.getMessage(), e);
+      LogExt2.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(),  e.getMessage(), e));
     }
   }
 
@@ -353,7 +354,7 @@ public class EPFValidationAction extends CapellaValidateAction {
                 marker.delete();
               }
             } catch (CoreException e) {
-              CapellaValidationUIActivator.getDefault().log(IStatus.ERROR, e.getMessage(), e);
+              LogExt2.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(),  e.getMessage(), e));
             }
           }
         }
