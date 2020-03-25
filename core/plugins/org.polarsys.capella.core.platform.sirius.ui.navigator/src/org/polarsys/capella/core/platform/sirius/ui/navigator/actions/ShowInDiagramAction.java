@@ -41,12 +41,12 @@ import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 
 /**
@@ -85,7 +85,7 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
     Set<DDiagramElement> viewsFromEditor = getViewsFromEditor(activeEditor, semanticElements);
 
     if (viewsFromEditor.isEmpty()) {
-      return new Status(IStatus.INFO, CapellaNavigatorPlugin.PLUGIN_ID,
+      return new Status(IStatus.INFO, FrameworkUtil.getBundle(getClass()).getSymbolicName(),
           Messages.ShowInDiagramAction_UnknownElement_Message);
     }
 
@@ -97,7 +97,7 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
       // return a status containing the reason
       DDiagramElement diagramElement = viewsFromEditor.iterator().next();
       String message = getUnavailableElementMessage(diagramElement);
-      return new Status(IStatus.INFO, CapellaNavigatorPlugin.PLUGIN_ID, message);
+      return new Status(IStatus.INFO, FrameworkUtil.getBundle(getClass()).getSymbolicName(), message);
     }
 
     if (activeEditor instanceof DialectEditor) {

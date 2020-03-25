@@ -15,18 +15,18 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.helpers.HelperPlugin;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
-
-import org.polarsys.capella.common.helpers.HelperPlugin;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 
 /**
  * A helper class to 'validate' xml documents.
@@ -50,10 +50,10 @@ public class XMLValidationHelper {
       parser = SAXParserFactory.newInstance().newSAXParser();
     } catch (ParserConfigurationException exception) {
       HelperPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, 
-          HelperPlugin.getDefault().getPluginId(), exception.getMessage(), exception));
+          FrameworkUtil.getBundle(getClass()).getSymbolicName(), exception.getMessage(), exception));
     } catch (SAXException exception) {
       HelperPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, 
-          HelperPlugin.getDefault().getPluginId(), exception.getMessage(), exception));
+          FrameworkUtil.getBundle(getClass()).getSymbolicName(), exception.getMessage(), exception));
     } finally {
       if (parser == null){
         throw new RuntimeException("Cannot get a SAXParser instance"); //$NON-NLS-1$
@@ -73,12 +73,12 @@ public class XMLValidationHelper {
       parser.parse(new InputSource(new StringReader(text)), handler);
     } catch (IOException exception) {
       HelperPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, 
-          HelperPlugin.getDefault().getPluginId(), exception.getMessage(), exception));
+          FrameworkUtil.getBundle(getClass()).getSymbolicName(), exception.getMessage(), exception));
     } catch (SAXException exception) {
       if (!(exception instanceof SAXParseException)){
         // SAXParseExceptions are stored already in the handler, so skip them here.
         HelperPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, 
-          HelperPlugin.getDefault().getPluginId(), exception.getMessage(), exception));
+          FrameworkUtil.getBundle(getClass()).getSymbolicName(), exception.getMessage(), exception));
       }
     }
     return handler.getExceptions();

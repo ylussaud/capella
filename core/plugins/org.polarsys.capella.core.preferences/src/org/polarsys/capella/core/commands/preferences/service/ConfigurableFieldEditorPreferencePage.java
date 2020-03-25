@@ -33,6 +33,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPropertyPage;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.prefs.BackingStoreException;
 import org.polarsys.capella.core.commands.preferences.preferences.ConfigurabilityPreferences;
 import org.polarsys.capella.core.commands.preferences.util.XmlPreferencesConfig;
@@ -220,7 +221,7 @@ public abstract class ConfigurableFieldEditorPreferencePage extends FieldEditorP
     } catch (BackingStoreException exception) {
       StringBuilder loggerMessage = new StringBuilder("ConfigurableFieldEditorPreferencePage.performOk(..) _ "); //$NON-NLS-1$
     }
-    ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID).save();
+    ScopedCapellaPreferencesStore.getInstance(FrameworkUtil.getBundle(getClass()).getSymbolicName()).save();
     return super.performOk();
   }
 

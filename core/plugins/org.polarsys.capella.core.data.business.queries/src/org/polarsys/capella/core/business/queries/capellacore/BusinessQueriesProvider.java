@@ -25,6 +25,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.osgi.util.NLS;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.core.business.queries.BusinessQueriesPlugin;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
@@ -39,7 +40,7 @@ public class BusinessQueriesProvider {
    * @deprecated Use {@link BusinessQueriesPlugin#PLUGIN_ID} instead
    */
   @Deprecated
-  public static final String BUSINESS_QUERIES_PLUGIN_ID = BusinessQueriesPlugin.PLUGIN_ID;
+  public static final String BUSINESS_QUERIES_PLUGIN_ID = FrameworkUtil.getBundle(BusinessQueriesProvider.class).getSymbolicName();
 
   private List<IBusinessQuery> _businessQueriesCache = null;
   private Map<SimpleEntry<EClass, EStructuralFeature>, IBusinessQuery> businessQueriesMap;
@@ -54,7 +55,7 @@ public class BusinessQueriesProvider {
     if (null == _businessQueriesCache) {
       _businessQueriesCache = new ArrayList<IBusinessQuery>();
       List<IConfigurationElement> BQProvider =
-          Arrays.asList(ExtensionPointHelper.getConfigurationElements(BusinessQueriesPlugin.PLUGIN_ID, BUSINESS_QUERIES_EXTENSION_ID));
+          Arrays.asList(ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(getClass()).getSymbolicName(), BUSINESS_QUERIES_EXTENSION_ID));
       for (IConfigurationElement configurationElement : BQProvider) {
         IBusinessQuery contrib = (IBusinessQuery) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
         if (contrib != null) {
@@ -89,7 +90,7 @@ public class BusinessQueriesProvider {
             } else {
               // keep the existing key and log error.
               ILog log = BusinessQueriesPlugin.getDefault().getLog();
-              log.log(new Status(IStatus.WARNING, BusinessQueriesPlugin.PLUGIN_ID,
+              log.log(new Status(IStatus.WARNING, FrameworkUtil.getBundle(getClass()).getSymbolicName(),
                   NLS.bind(Messages.BusinessQueriesProvider_duplicateQueryContributionKey,
                       new Object[] { key.getKey(), key.getValue(), query.getClass().getName(), dup.getClass().getName() })));
             }

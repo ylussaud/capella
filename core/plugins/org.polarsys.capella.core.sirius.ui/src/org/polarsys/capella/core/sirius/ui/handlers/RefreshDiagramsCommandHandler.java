@@ -45,9 +45,9 @@ import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.tools.report.util.IJobConstants;
-import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
 public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler {
@@ -137,7 +137,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
         }
       }
       monitor_p.done();
-      return new Status(IStatus.OK, SiriusUIPlugin.getDefault().getPluginId(), representationsToRefresh.size() + " representation(s) refreshed.");
+      return new Status(IStatus.OK, FrameworkUtil.getBundle(getClass()).getSymbolicName(), representationsToRefresh.size() + " representation(s) refreshed.");
     }
   }
 

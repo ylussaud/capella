@@ -38,7 +38,7 @@ public class PropertyValueHelper {
 			RegistryElement regElt = analysis.getRegistryElement(id);	
 			return regElt.getFinders();
 		} catch (ModelScrutinyException e) {
-			Status status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
+			Status status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), e.getMessage(), e);
 			Activator.getDefault().getLog().log(status);
 		}
 		return Collections.emptySet();

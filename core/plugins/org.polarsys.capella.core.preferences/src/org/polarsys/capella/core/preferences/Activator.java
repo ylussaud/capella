@@ -37,6 +37,7 @@ import org.eclipse.osgi.util.NLS;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.internalization.l10n.CustomPreferencesMessages;
 import org.polarsys.capella.core.commands.preferences.model.CategoryPreferences;
 import org.polarsys.capella.core.commands.preferences.model.CategoryPreferencesManager;
@@ -126,7 +127,7 @@ public class Activator extends AbstractUIPlugin {
   public IPreferenceStore getPreferenceStore() {
     // Create the preference store lazily.
     if (preferenceStore == null) {
-      preferenceStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.PLUGIN_ID);
+      preferenceStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, FrameworkUtil.getBundle(getClass()).getSymbolicName());
     }
     return preferenceStore;
   }
@@ -174,7 +175,7 @@ public class Activator extends AbstractUIPlugin {
 
     extensionTracker.registerHandler(extensionHandler, null);
 
-    IExtensionPoint extPoint = Platform.getExtensionRegistry().getExtensionPoint(Activator.PLUGIN_ID,
+    IExtensionPoint extPoint = Platform.getExtensionRegistry().getExtensionPoint(FrameworkUtil.getBundle(getClass()).getSymbolicName(),
         Activator.PREFERENCES_PROVIDERS_EXT_P_NAME);
     IExtensionTracker extTracker = Activator.getExtensionTracker();
     if (extTracker != null) {
@@ -207,7 +208,7 @@ public class Activator extends AbstractUIPlugin {
   public void loadCategories() {
     if (Platform.isRunning()) {
 
-      IExtensionPoint extPoint = Platform.getExtensionRegistry().getExtensionPoint(Activator.PLUGIN_ID,
+      IExtensionPoint extPoint = Platform.getExtensionRegistry().getExtensionPoint(FrameworkUtil.getBundle(getClass()).getSymbolicName(),
           Activator.PREFERENCES_PROVIDERS_EXT_P_NAME);
 
       IExtensionTracker extTracker = Activator.getExtensionTracker();

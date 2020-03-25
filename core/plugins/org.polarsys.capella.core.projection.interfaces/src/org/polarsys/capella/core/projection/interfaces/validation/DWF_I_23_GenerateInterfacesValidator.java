@@ -25,6 +25,7 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.internal.service.AbstractValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.eclipse.emf.validation.model.IModelConstraint;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -96,7 +97,7 @@ public class DWF_I_23_GenerateInterfacesValidator extends AbstractModelConstrain
       } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
         if (!loggedWorkaroundError){
           loggedWorkaroundError = true;
-          InterfaceGenerationActivator.getDefault().getLog().log(new Status(IStatus.ERROR, InterfaceGenerationActivator.PLUGIN_ID, 
+          InterfaceGenerationActivator.getDefault().getLog().log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), 
             "Cannot use cache for rule DWF_I_23. Some results for this rule may appear multiple times.", e)); //$NON-NLS-1$
         }
       } finally {

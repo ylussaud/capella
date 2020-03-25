@@ -39,6 +39,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
@@ -50,7 +51,6 @@ import org.polarsys.capella.core.data.capellacore.Trace;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
-import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.MDTrace;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.Messages;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.components.TraceTreeViewer;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.components.TraceTreeViewer.TraceType;
@@ -188,7 +188,7 @@ public class ViewEditPage extends WizardPage {
     gdData.horizontalSpan = 2;
     imageExplanation.setLayoutData(gdData);
     imageExplanation
-        .setImage(AbstractUIPlugin.imageDescriptorFromPlugin(MDTrace.PLUGIN_ID, IImageKeys.EXPLANATION).createImage());
+        .setImage(AbstractUIPlugin.imageDescriptorFromPlugin(FrameworkUtil.getBundle(getClass()).getSymbolicName(), IImageKeys.EXPLANATION).createImage());
 
     // **Presentation of trace elements(source and target)
     Composite traceTreeComposite = new Composite(composite, SWT.FILL);

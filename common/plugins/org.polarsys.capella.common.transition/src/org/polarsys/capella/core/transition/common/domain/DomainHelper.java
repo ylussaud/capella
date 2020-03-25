@@ -22,11 +22,11 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.transition.common.Activator;
 import org.polarsys.capella.core.transition.common.ExtensionHelper;
 import org.polarsys.capella.core.transition.common.constants.ISchemaConstants;
 import org.polarsys.capella.core.transition.common.context.TransitionContext;
-import org.polarsys.kitalpha.transposer.transformation.emf.TransposerEMFPlugin;
 import org.polarsys.kitalpha.transposer.transformation.emf.util.EmfDomainHelper;
 
 /**
@@ -73,7 +73,7 @@ public class DomainHelper extends EmfDomainHelper {
         }
       }
       Activator.getDefault().getLog()
-          .log(new Status(IStatus.ERROR, TransposerEMFPlugin.PLUGIN_ID, "No Domain Class called : " + name, e)); //$NON-NLS-1$
+          .log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), "No Domain Class called : " + name, e)); //$NON-NLS-1$
     }
 
     return null;

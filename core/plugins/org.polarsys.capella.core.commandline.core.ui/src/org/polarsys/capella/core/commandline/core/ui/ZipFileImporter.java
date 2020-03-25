@@ -30,9 +30,9 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.dialogs.IOverwriteQuery;
 import org.eclipse.ui.internal.wizards.datatransfer.ZipLeveledStructureProvider;
 import org.eclipse.ui.wizards.datatransfer.ImportOperation;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.tools.report.util.LogExt;
-import org.polarsys.capella.core.commandline.core.CommandLineApp;
 import org.polarsys.capella.core.commandline.core.IFileImporter;
 
 /**
@@ -86,7 +86,7 @@ public class ZipFileImporter implements IFileImporter {
           if (!forceImport) {
             if (project.exists()) {
               // Log an error if a project exists already and -forceImport is not given
-              IStatus status = new Status(IStatus.ERROR, CommandLineApp.PLUGIN_ID, "Problem while importing project into the workspace: A project with the same name is referenced from the workspace. This should be removed from the workspace.");
+              IStatus status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), "Problem while importing project into the workspace: A project with the same name is referenced from the workspace. This should be removed from the workspace.");
               LogExt.log(IReportManagerDefaultComponents.MODEL, status);
             } else {
               project.create(description, null);
@@ -140,7 +140,7 @@ public class ZipFileImporter implements IFileImporter {
       return projects;
 
     } catch (Exception exception) {
-      IStatus status = new Status(IStatus.ERROR, CommandLineApp.PLUGIN_ID, exception.getMessage());
+      IStatus status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), exception.getMessage());
       LogExt.log(IReportManagerDefaultComponents.MODEL, status);
       return Collections.emptyList();
     }

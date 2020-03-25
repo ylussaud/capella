@@ -29,11 +29,11 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
-import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
 
 /**
  * This command removes non visible elements. This includes hidden elements but also non visible elements like a
@@ -131,17 +131,17 @@ public class RemoveHiddenElementsCommand extends AbstractReadWriteCommand implem
       }
       // report information message to Information View
       if (count > 0) {
-        childs.add(new Status(IStatus.OK, SiriusUIPlugin.getDefault().getPluginId(),
+        childs.add(new Status(IStatus.OK, FrameworkUtil.getBundle(getClass()).getSymbolicName(),
             NLS.bind("Removing {0} element(s) from diagram: {2}",
                 new String[] { Integer.toString(count), descriptor.getName(), })));
       }
     }
     
     if (childs.isEmpty()) {
-      return new Status(IStatus.INFO, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind("{0}: Nothing to do", getName()));
+      return new Status(IStatus.INFO, FrameworkUtil.getBundle(getClass()).getSymbolicName(), NLS.bind("{0}: Nothing to do", getName()));
     }
 
-    MultiStatus status = new MultiStatus(SiriusUIPlugin.getDefault().getPluginId(), IStatus.OK,
+    MultiStatus status = new MultiStatus(FrameworkUtil.getBundle(getClass()).getSymbolicName(), IStatus.OK,
         NLS.bind("{0}: {1} diagram(s) updated", getName(), childs.size()), null);
     return status;
   }

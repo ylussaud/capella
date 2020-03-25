@@ -21,6 +21,7 @@ import java.util.Set;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.transition.common.exception.TransitionException;
 import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
 import org.polarsys.kitalpha.cadence.core.api.parameter.WorkflowActivityParameter;
@@ -138,7 +139,7 @@ public class ExtendedTransposer extends GenericTransposer {
           getRulesHandler().apply(v.getContent(), scheduledTask.isCompletelyTransposable(), monitor);
           checkCancel(monitor);
         } catch (RuleExecutionException e) {
-          TransposerCorePlugin.getDefault().logError(TransposerCorePlugin.PLUGIN_ID,
+          TransposerCorePlugin.getDefault().logError(FrameworkUtil.getBundle(getClass()).getSymbolicName(),
               RuleExecutionException.class.getSimpleName() + " on " + e.getMessage(), e.getCause()); //$NON-NLS-1$
         }
 

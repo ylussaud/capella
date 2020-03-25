@@ -139,7 +139,7 @@ public class Rule_DWF_DS_18 extends AbstractRulesOnDesignTest {
       status = Status.OK_STATUS;
     } else {
       String message = "Quick fix to navigate to elements for validation rule DWF_DS_18 does not work";
-      status = new Status(IStatus.ERROR, TestValidationRulesPlugin.PLUGIN_ID, message);
+      status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), message);
     }
     return status;
   }

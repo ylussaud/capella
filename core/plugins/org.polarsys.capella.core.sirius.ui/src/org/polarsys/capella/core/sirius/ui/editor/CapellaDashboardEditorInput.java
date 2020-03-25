@@ -24,6 +24,7 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IPersistableElement;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
@@ -31,7 +32,6 @@ import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
 import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
@@ -239,7 +239,7 @@ public class CapellaDashboardEditorInput implements IEditorInput, IPersistableEl
         if (openSessionAction.getFailedOpeningSessions().containsKey(diagramFile)) {
           IStatus status = openSessionAction.getFailedOpeningSessions().get(diagramFile);
           _sessionStatus =
-              new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind("Error while opening session {0} [{1}]", firstAnalysisFile,
+              new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), NLS.bind("Error while opening session {0} [{1}]", firstAnalysisFile,
                   status.getMessage()), status.getException());
         }
 
@@ -255,7 +255,7 @@ public class CapellaDashboardEditorInput implements IEditorInput, IPersistableEl
 
     } catch (Exception e) {
       _sessionStatus =
-          new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind("Error while opening session {0} [{1}]", firstAnalysisFile,
+          new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), NLS.bind("Error while opening session {0} [{1}]", firstAnalysisFile,
               e.getMessage()), e);
       __logger.error(new EmbeddedMessage(e.getMessage(), IReportManagerDefaultComponents.UI), e);
     }

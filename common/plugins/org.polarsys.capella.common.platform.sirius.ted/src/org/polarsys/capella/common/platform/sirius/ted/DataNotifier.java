@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  * Provides EMF model notification with an unique adapter.<br>
@@ -132,7 +133,7 @@ public class DataNotifier extends EContentAdapter implements IEditingDomainProvi
       super.notifyChanged(notification);
     } catch (Exception exception) {
 	  PlatformSiriusTedActivator.getDefault().getLog().log(
-          new Status(IStatus.ERROR, PlatformSiriusTedActivator.getDefault().getPluginId(), exception.getMessage(), exception));
+          new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), exception.getMessage(), exception));
       // TODO: must handle this case, ie. provide a CDO version adapted to CDO of DataNotifier.
       // DataNotifier is instantiated by our SemanticResourceSet. there is already an extension point that allows to override the capella cross referencer.
       // Must do the same thing here.

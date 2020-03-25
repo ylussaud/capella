@@ -28,6 +28,7 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangeListener;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangedEvent;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
@@ -37,7 +38,6 @@ import org.polarsys.capella.common.flexibility.wizards.ui.DefaultLabelProvider;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.attributes.AttributesHandlerHelper;
 import org.polarsys.capella.common.re.handlers.scope.DependenciesHandlerHelper;
-import org.polarsys.capella.common.re.ui.Activator;
 import org.polarsys.capella.common.re.ui.decorators.InstanciationLabelDecorator;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -184,12 +184,12 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
         }
 
         if (!scopeElements.contains(element)) {
-          return new Status(IStatus.INFO, Activator.PLUGIN_ID, "");
+          return new Status(IStatus.INFO, FrameworkUtil.getBundle(getClass()).getSymbolicName(), "");
         }
 
         IContext ctx = (IContext) context.getPropertyContext().getSource();
         if (AttributesHandlerHelper.getInstance(ctx).isSuffixable(element, ctx)) {
-          return new Status(IStatus.WARNING, Activator.PLUGIN_ID, "+SUFFIX");
+          return new Status(IStatus.WARNING, FrameworkUtil.getBundle(getClass()).getSymbolicName(), "+SUFFIX");
         }
 
         return Status.OK_STATUS;
@@ -221,7 +221,7 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
     if (values.isEmpty()) {
       return Status.OK_STATUS;
     }
-    return new Status(IStatus.WARNING, Activator.PLUGIN_ID, "Missing dependencies");
+    return new Status(IStatus.WARNING, FrameworkUtil.getBundle(getClass()).getSymbolicName(), "Missing dependencies");
   }
 
   @Override

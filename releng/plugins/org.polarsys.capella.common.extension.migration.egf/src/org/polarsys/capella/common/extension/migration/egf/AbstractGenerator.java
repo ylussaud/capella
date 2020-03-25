@@ -42,9 +42,9 @@ public abstract class AbstractGenerator {
       Throwable exception = diagnostic.getException();
       if (null != exception) {
         loggerMessage.append(exception.getMessage());
-        Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, loggerMessage.toString(), exception));
+        Activator.getDefault().getLog().log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), loggerMessage.toString(), exception));
       } else {
-    	Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, loggerMessage.toString(), exception));
+    	Activator.getDefault().getLog().log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), loggerMessage.toString(), exception));
       }
       result = false;
     }

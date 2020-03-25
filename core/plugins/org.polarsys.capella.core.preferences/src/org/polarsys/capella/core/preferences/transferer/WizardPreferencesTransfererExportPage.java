@@ -49,12 +49,11 @@ import org.eclipse.ui.internal.wizards.preferences.PreferencesMessages;
 import org.eclipse.ui.internal.wizards.preferences.WizardPreferencesPage;
 import org.eclipse.ui.model.BaseWorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.prefs.BackingStoreException;
-
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
-import org.polarsys.capella.core.preferences.Activator;
 
 /**
  */
@@ -404,7 +403,7 @@ public class WizardPreferencesTransfererExportPage extends WizardPreferencesPage
       if (PreferencesHelper.hasConfigurationProject(project)) {
         try {
           IProject configProject = PreferencesHelper.getReferencedProjectConfiguration(project);
-          new ProjectScope(configProject).getNode(Activator.PLUGIN_ID).flush();
+          new ProjectScope(configProject).getNode(FrameworkUtil.getBundle(getClass()).getSymbolicName()).flush();
           configProject.refreshLocal(IResource.DEPTH_INFINITE, null);
           project.refreshLocal(IResource.DEPTH_INFINITE, null);
         } catch (BackingStoreException exception) {

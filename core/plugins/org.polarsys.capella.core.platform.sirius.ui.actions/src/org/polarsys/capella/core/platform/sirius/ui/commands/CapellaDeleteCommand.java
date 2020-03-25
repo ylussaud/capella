@@ -26,11 +26,11 @@ import org.eclipse.jface.viewers.DecoratingLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.core.model.handler.command.BasicCapellaDeleteCommand;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.preferences.IDeletePreferences;
-import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaDeleteAction;
 import org.polarsys.capella.core.platform.sirius.ui.actions.decorators.ProtectedElementsDecorator;
 import org.polarsys.capella.core.ui.toolkit.dialogs.ConfirmDeleteCapellaElementDialog;
@@ -141,7 +141,7 @@ public class CapellaDeleteCommand extends BasicCapellaDeleteCommand {
     if (preventProtectedElementsDeletion) {
       Set<?> elementsToDelete = getAllElementsToDelete();
       if (!CapellaDeleteAction.canDelete(elementsToDelete)) {
-        protectedElements = new Status(Status.ERROR, CapellaActionsActivator.PLUGIN_ID,
+        protectedElements = new Status(Status.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(),
             Messages.CapellaDeleteCommand_ProtectedElementsError);
       }
     }

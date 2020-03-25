@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.Status;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.MdeCommonActivator;
 import org.polarsys.capella.common.helpers.ICommonConstants2;
 import org.polarsys.capella.common.helpers.export.utils.CSVWriterMessages;
@@ -84,11 +85,11 @@ public class DataExporter {
         exporter.export(stream, data);
       } catch (FileNotFoundException exception) {
         MdeCommonActivator.getDefault().getLog()
-            .log(new Status(Status.ERROR, MdeCommonActivator.getDefault().getPluginId(), "Error", exception));
+            .log(new Status(Status.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), "Error", exception));
         result = false;
       } catch (IOException exception) {
         MdeCommonActivator.getDefault().getLog()
-            .log(new Status(Status.ERROR, MdeCommonActivator.getDefault().getPluginId(), "Error", exception));
+            .log(new Status(Status.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), "Error", exception));
         result = false;
       } finally {
         try {
@@ -97,7 +98,7 @@ public class DataExporter {
           }
         } catch (IOException exception) {
           MdeCommonActivator.getDefault().getLog()
-              .log(new Status(Status.ERROR, MdeCommonActivator.getDefault().getPluginId(), "Error", exception));
+              .log(new Status(Status.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), "Error", exception));
         }
       }
     } else {

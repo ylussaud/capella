@@ -36,6 +36,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.eclipse.ui.views.markers.WorkbenchMarkerResolution;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.Messages;
 
@@ -208,10 +209,10 @@ public class QuickfixHandler extends AbstractDynamicContributionItem {
           PlatformUI.getWorkbench().getProgressService().runInUI(context, resolutionsRunnable, null);
         } catch (InvocationTargetException exception) {
           StatusManager.getManager().handle(
-              new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception.getMessage(), exception));
+              new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), exception.getMessage(), exception));
         } catch (InterruptedException exception) {
           StatusManager.getManager().handle(
-              new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception.getMessage(), exception));
+              new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), exception.getMessage(), exception));
         }
       }
     });

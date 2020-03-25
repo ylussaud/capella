@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.WorkspaceImage;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
 
@@ -86,7 +87,7 @@ public class ResourceHelper {
           }
         }
       } catch (CoreException e) {
-        IStatus status = new Status(e.getStatus().getSeverity(), SiriusUIPlugin.getDefault().getPluginId(),
+        IStatus status = new Status(e.getStatus().getSeverity(), FrameworkUtil.getBundle(ResourceHelper.class).getSymbolicName(),
             "Erros while collecting files!", e);
         SiriusUIPlugin.getDefault().getLog().log(status);
       }

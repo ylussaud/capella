@@ -19,10 +19,9 @@ import org.eclipse.gef.rulers.RulerProvider;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.service.IItemDescriptor;
 import org.polarsys.capella.core.commands.preferences.service.PreferencesItemsRegistry;
-import org.polarsys.capella.core.preferences.Activator;
 
 /**
  */
@@ -36,7 +35,7 @@ public class CommandsPreferencesInitializer extends AbstractPreferenceInitialize
 
     Collection<IItemDescriptor> constraints = PreferencesItemsRegistry.getInstance().getAllDescriptors();
 
-    IEclipsePreferences eclipsePreferenceNode = new DefaultScope().getNode(Activator.PLUGIN_ID);
+    IEclipsePreferences eclipsePreferenceNode = new DefaultScope().getNode(FrameworkUtil.getBundle(getClass()).getSymbolicName());
 
     for (IItemDescriptor capellaPreferenceNode : constraints) {
       eclipsePreferenceNode.put(capellaPreferenceNode.getId(), String.valueOf(capellaPreferenceNode.isEnabledByDefault()));

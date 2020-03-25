@@ -23,10 +23,10 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.commandline.core.ui.AbstractWorkbenchCommandLine;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
 import org.polarsys.capella.core.sirius.ui.handlers.DeleteHiddenElementsJob;
 
 public class RemoveHiddenElementsCommandLine extends AbstractWorkbenchCommandLine {
@@ -48,7 +48,7 @@ public class RemoveHiddenElementsCommandLine extends AbstractWorkbenchCommandLin
 
       Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
       if (session == null) {
-        return new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), "No aird model found!");
+        return new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), "No aird model found!");
       }
       if (!session.isOpen()) {
         session.open(new NullProgressMonitor());

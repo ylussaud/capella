@@ -11,7 +11,7 @@
 package org.polarsys.capella.common.tools.report.appenders.usage.preferences;
 
 import org.eclipse.core.resources.ProjectScope;
-import org.polarsys.capella.common.tools.report.appenders.usage.UsageAppenderPlugin;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 
 /**
@@ -22,7 +22,7 @@ public class PreferencesInitializer extends AbstractPreferencesInitializer {
    *
    */
   public PreferencesInitializer() {
-    super(UsageAppenderPlugin.PLUGIN_ID);
+    super(FrameworkUtil.getBundle(PreferencesInitializer.class).getSymbolicName());
   }
 
   /**

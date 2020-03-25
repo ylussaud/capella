@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.FrameworkUtil;
 
 public class LogDataHandler extends AbstractHandler {
 
@@ -40,7 +41,7 @@ public class LogDataHandler extends AbstractHandler {
     d.open();
     if (d.getReturnCode() == InputDialog.OK) {
       String value = d.getValue();
-      IStatus status = new Status(IStatus.INFO, ReportLogActivator.getDefault().getPluginId(), value);
+      IStatus status = new Status(IStatus.INFO, FrameworkUtil.getBundle(getClass()).getSymbolicName(), value);
       ReportLogActivator.getDefault().getLog().log(status);
     }
     return null;

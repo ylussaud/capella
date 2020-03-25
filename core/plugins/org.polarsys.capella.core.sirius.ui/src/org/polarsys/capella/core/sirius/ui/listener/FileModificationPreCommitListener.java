@@ -50,7 +50,7 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStat
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.statushandlers.StatusManager;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.domain.AbstractEditingDomainResourceSetListenerImpl;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.IUserEnforcedHelper2;
@@ -66,7 +66,6 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.handler.pre.condition.IFileModificationPreconditionChecker;
 import org.polarsys.capella.core.platform.sirius.ui.session.CapellaSessionHelper;
-import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
 
 /**
  * File Modification Pre Commit listener.<br>
@@ -493,7 +492,7 @@ public class FileModificationPreCommitListener extends AbstractEditingDomainReso
     for (File f : filesWithNoWritePermission) {
       sb.append(f.getAbsolutePath() + "\n");
     }
-    CapellaSessionHelper.reportError(new Status(IStatus.ERROR,SiriusUIPlugin.getDefault().getPluginId(), sb.toString()));
+    CapellaSessionHelper.reportError(new Status(IStatus.ERROR, FrameworkUtil.getBundle(FileModificationPreCommitListener.class).getSymbolicName(), sb.toString()));
     return Status.CANCEL_STATUS;
   } 
 

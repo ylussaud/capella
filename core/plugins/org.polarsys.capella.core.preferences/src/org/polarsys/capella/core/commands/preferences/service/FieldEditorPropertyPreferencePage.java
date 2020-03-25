@@ -153,7 +153,7 @@ public abstract class FieldEditorPropertyPreferencePage extends FieldEditorPrefe
       // Create an overlay preference store and fill it with properties
       propertiesStore = new PropertyStore((IResource) getElement(), Activator.getDefault().getPreferenceStore() /*
                                                                                                                  * new ScopedPreferenceStore(new
-                                                                                                                 * InstanceScope(), Activator.PLUGIN_ID)
+                                                                                                                 * InstanceScope(), FrameworkUtil.getBundle(getClass()).getSymbolicName())
                                                                                                                  */, pageId);
       // Set overlay store as current preference store
 

@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.impl.InternalTransactionalCommandStack;
 import org.eclipse.osgi.util.NLS;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
@@ -299,7 +300,7 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
        */
       @Override
       public void commandRolledBack() {
-        result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, getName(), null);
+        result[0] = new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), 1, getName(), null);
       }
 
       public void run() {
@@ -353,7 +354,7 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
        */
       @Override
       public void commandRolledBack() {
-        result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, getName(), null);
+        result[0] = new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), 1, getName(), null);
       }
 
       public void run() {
@@ -364,7 +365,7 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
           postMigrationExecute(executionManager, resourceSet, context);
           context.getProgressMonitor().worked(1);
         } catch (Exception exception) {
-          result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, getName() + ": " + exception.getMessage(), //$NON-NLS-1$
+          result[0] = new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), 1, getName() + ": " + exception.getMessage(), //$NON-NLS-1$
               exception);
         } finally {
           context.getProgressMonitor().done();
@@ -422,7 +423,7 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
           }
 
         } catch (Exception exception) {
-          result[0] = new Status(IStatus.ERROR, Activator.PLUGIN_ID, 1, getName() + ": " + exception.getMessage(), //$NON-NLS-1$
+          result[0] = new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), 1, getName() + ": " + exception.getMessage(), //$NON-NLS-1$
               exception);
 
         } finally {

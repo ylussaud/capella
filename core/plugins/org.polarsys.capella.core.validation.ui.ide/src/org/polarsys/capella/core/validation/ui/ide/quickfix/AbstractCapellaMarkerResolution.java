@@ -25,9 +25,9 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.statushandlers.StatusManager;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.ReportMarkerResolution;
-import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
 import org.polarsys.capella.core.validation.ui.ide.internal.quickfix.MarkerResolutionCache;
 
 abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolution {
@@ -180,7 +180,7 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
       marker.delete();
     } catch (CoreException exception) {
       StatusManager.getManager().handle(
-          new Status(IStatus.ERROR, PluginActivator.getDefault().getPluginId(), exception.getMessage(), exception));
+          new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), exception.getMessage(), exception));
     }
   }
 }

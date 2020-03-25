@@ -20,14 +20,13 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.osgi.util.NLS;
-
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.transition.common.exception.TransitionException;
 import org.polarsys.kitalpha.cadence.core.api.CadenceValidator;
 import org.polarsys.kitalpha.cadence.core.api.IActivity;
 import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.cadence.core.api.parameter.ParameterError;
 import org.polarsys.kitalpha.cadence.core.api.parameter.WorkflowActivityParameter;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.core.transition.common.exception.TransitionException;
 
 /**
  * This class allows to launch workflow.
@@ -102,7 +101,7 @@ public class ExtendedCadenceLauncher {
         ActivityParameters activityParameters = workflowActivityParameters != null ? workflowActivityParameters.getActivityParameters(activityID) : null;
         IStatus status = cadence(workflow_id, workflowElement_id, activityID, activityParameters, monitor);
         if (status == null) {
-          //  Activator.getDefault().getLog().log(new Status(IStatus.WARNING, Activator.PLUGIN_ID, "Activity : " + activityID + " has returned a null status."));
+          //  Activator.getDefault().getLog().log(new Status(IStatus.WARNING, FrameworkUtil.getBundle(getClass()).getSymbolicName(), "Activity : " + activityID + " has returned a null status."));
         } else if (status.matches(IStatus.CANCEL) || status.matches(IStatus.ERROR)) {
           result.add(status);
           break;

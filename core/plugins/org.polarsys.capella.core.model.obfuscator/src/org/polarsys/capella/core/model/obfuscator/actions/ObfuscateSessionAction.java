@@ -23,10 +23,10 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -142,7 +142,7 @@ public class ObfuscateSessionAction extends BaseSelectionListenerAction {
     executionManager_p.execute(new AbstractReadWriteCommand() {
       public void run() {
         IConfigurationElement[] element =
-            ExtensionPointHelper.getConfigurationElements(CapellaModelObfuscatorActivator.getDefault().getPluginId(), "Obfuscator");
+            ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(getClass()).getSymbolicName(), "Obfuscator");
         for (IConfigurationElement ce : element) {
           IResourceObfuscator obfuscator = (IResourceObfuscator) ExtensionPointHelper.createInstance(ce, "obfuscatorClass");
           if ((obfuscator != null) && obfuscator.isApplicableOn(resource_p)) {

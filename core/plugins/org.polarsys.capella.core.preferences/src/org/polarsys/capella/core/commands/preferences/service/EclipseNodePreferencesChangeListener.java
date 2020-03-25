@@ -22,9 +22,8 @@ import org.eclipse.jface.preference.PreferenceManager;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.PlatformUI;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.util.XmlPreferencesConfig;
-import org.polarsys.capella.core.preferences.Activator;
 
 /**
  */
@@ -60,7 +59,7 @@ public class EclipseNodePreferencesChangeListener implements IPreferenceChangeLi
   // XXX to verify
   public void enablePreferences() {
 
-    IEclipsePreferences rootNode = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+    IEclipsePreferences rootNode = InstanceScope.INSTANCE.getNode(FrameworkUtil.getBundle(getClass()).getSymbolicName());
 
     PreferenceManager preferenceManager = PlatformUI.getWorkbench().getPreferenceManager();
 

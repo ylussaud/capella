@@ -24,7 +24,7 @@ public class TestParameters implements ITestParameters {
   public static ITestParameters getInstance() {
     if (instance == null) {
       for (IConfigurationElement configElement : ExtensionPointHelper
-          .getConfigurationElements(CapellaPerformanceTestsActivator.PLUGIN_ID, TEST_PARAMETER_EXT_POINT)) {
+          .getConfigurationElements(FrameworkUtil.getBundle(getClass()).getSymbolicName(), TEST_PARAMETER_EXT_POINT)) {
         instance = (ITestParameters) ExtensionPointHelper.createInstance(configElement, ExtensionPointHelper.ATT_CLASS);
       }
 

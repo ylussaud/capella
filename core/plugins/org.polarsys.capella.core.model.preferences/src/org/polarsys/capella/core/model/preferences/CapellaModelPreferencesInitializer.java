@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.model.preferences;
 
 import org.eclipse.core.resources.ProjectScope;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 
 /**
@@ -21,7 +22,7 @@ public class CapellaModelPreferencesInitializer extends AbstractPreferencesIniti
    * Default constructor.
    */
   public CapellaModelPreferencesInitializer() {
-    super(CapellaModelPreferencesPlugin.PLUGIN_ID);
+    super(FrameworkUtil.getBundle(CapellaModelPreferencesInitializer.class).getSymbolicName());
   }
 
   @Override

@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.validation.ui.ide.quickfix;
 
+import org.osgi.framework.FrameworkUtil;
+
 /**
  * Delete an Element, with confirmation also delete the marker (ok:yes, cancel:no)
  */
@@ -30,7 +32,8 @@ public class DeleteCommandResolver extends AbstractDeleteCommandResolver {
   public DeleteCommandResolver(String resolverLabel, Object elementToDelete) {
     label = resolverLabel;
     this.elementToDelete = elementToDelete;
-    setContributorId(org.polarsys.capella.core.ui.toolkit.Activator.PLUGIN_ID);
+    //TODO ACTIVATOR
+    setContributorId(FrameworkUtil.getBundle(getClass()).getSymbolicName());
     setImgKey(DELETE_ICON_PATH);
   }
 

@@ -15,11 +15,11 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.osgi.util.NLS;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.flexibility.properties.property.AbstractProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IEditableProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.libraries.IModel;
-import org.polarsys.capella.core.libraries.Activator;
 
 public class ReferencesProperty extends AbstractProperty implements IEditableProperty {
 
@@ -53,13 +53,13 @@ public class ReferencesProperty extends AbstractProperty implements IEditablePro
         b.append(modelX.getIdentifier().getName() + ",");
       }
       b.deleteCharAt(b.length() - 1);
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, NLS.bind(
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), NLS.bind(
           "There is other unsaved session(s) ({0}), this may lead to inconsistencies,\n You should save others sessions before manage references.", b));
     }
 
     boolean unsavedModel = model.isUnsavedRootModel();
     if (unsavedModel) {
-      return new Status(IStatus.WARNING, Activator.PLUGIN_ID, "The session is unsaved. Manage references will save the session.");
+      return new Status(IStatus.WARNING, FrameworkUtil.getBundle(getClass()).getSymbolicName(), "The session is unsaved. Manage references will save the session.");
     }
 
     Collection<Collection<IModel>> cycles = model.getCycles();
@@ -69,7 +69,7 @@ public class ReferencesProperty extends AbstractProperty implements IEditablePro
       for (IModel pathElement : cycle) {
         b.append(pathElement.getIdentifier().getName() + " ");
       }
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, cycles.size() + " cycles found. First one is [" + b + "]");
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), cycles.size() + " cycles found. First one is [" + b + "]");
     }
 
     return Status.OK_STATUS;

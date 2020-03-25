@@ -17,7 +17,7 @@ import org.eclipse.core.runtime.IExecutableExtensionFactory;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.ExtensionFactory;
-import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  *
@@ -50,7 +50,7 @@ IExecutableExtension {
 		else
 			super.create();
 
-		throw new CoreException(new Status(IStatus.ERROR, PlatformUI.PLUGIN_ID,
+		throw new CoreException(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(),
 				0, "Unknown id in data argument for " + getClass(), null)); //$NON-NLS-1$
 	}
 	
@@ -77,7 +77,7 @@ IExecutableExtension {
 			id = (String) data;
 		} else {
 			throw new CoreException(new Status(IStatus.ERROR,
-					PlatformUI.PLUGIN_ID, 0,
+					FrameworkUtil.getBundle(getClass()).getSymbolicName(), 0,
 					"Data argument must be a String for " + getClass(), null)); //$NON-NLS-1$
 		}
 		this.config = config;

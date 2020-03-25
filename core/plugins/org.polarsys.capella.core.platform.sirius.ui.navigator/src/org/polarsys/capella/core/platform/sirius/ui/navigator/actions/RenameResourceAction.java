@@ -62,6 +62,7 @@ import org.eclipse.ui.ide.undo.WorkspaceUndoUtil;
 import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
 import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 import org.eclipse.ui.internal.ide.IIDEHelpContextIds;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
@@ -104,7 +105,7 @@ public class RenameResourceAction extends WorkspaceAction {
   /**
    * The id of this action.
    */
-  public static final String ID = PlatformUI.PLUGIN_ID + ".RenameResourceAction";//$NON-NLS-1$
+  public static final String ID = FrameworkUtil.getBundle(RenameResourceAction.class).getSymbolicName() + ".RenameResourceAction";//$NON-NLS-1$
 
   /**
    * The new path.
@@ -173,6 +174,7 @@ public class RenameResourceAction extends WorkspaceAction {
     // shell as we are not in the UI thread.
 
     Runnable query = new Runnable() {
+      @Override
       @SuppressWarnings("synthetic-access")
       public void run() {
         String pathName = destination.getFullPath().makeRelative().toString();
@@ -223,12 +225,14 @@ public class RenameResourceAction extends WorkspaceAction {
   @Override
   protected IRunnableWithProgress createOperation(final IStatus[] errorStatus) {
     return new IRunnableWithProgress() {
+      @Override
       @SuppressWarnings({ "unchecked", "synthetic-access" })
       public void run(IProgressMonitor monitor) {
         final IResource[] resources = (IResource[]) getActionResources().toArray(new IResource[getActionResources().size()]);
         // Precondition : No Sirius session must be open to rename files.
         if (!SessionManager.INSTANCE.getSessions().isEmpty()) {
           _shell.getDisplay().asyncExec(new Runnable() {
+            @Override
             public void run() {
               MessageDialog.openWarning(_shell, Messages.RenameResourceAction_Session_Warning_Dialog_Title,
                   NLS.bind(Messages.RenameResourceAction_Session_Warning_Dialog_Message, resources[0].getName()));
@@ -299,12 +303,12 @@ public class RenameResourceAction extends WorkspaceAction {
         boolean updateCapellaProjectName = CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION.equals(oldResource.getFileExtension());
         updateReferencesToFile(oldResource.getProject(), resourceNameBeforeRenaming, newResourcePath.lastSegment(), updateCapellaProjectName);
       } catch (UnsupportedEncodingException e) {
-        errorStatus[0] = new Status(IStatus.ERROR, PlatformUI.PLUGIN_ID, "Rename action failed to perform because UTF-8 encoding is not supported", e);
+        errorStatus[0] = new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), "Rename action failed to perform because UTF-8 encoding is not supported", e);
       } catch (ExecutionException e) {
         if (e.getCause() instanceof CoreException) {
           errorStatus[0] = ((CoreException) e.getCause()).getStatus();
         } else {
-          errorStatus[0] = new Status(IStatus.ERROR, PlatformUI.PLUGIN_ID, getProblemsMessage(), e);
+          errorStatus[0] = new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), getProblemsMessage(), e);
         }
       }
 
@@ -335,6 +339,7 @@ public class RenameResourceAction extends WorkspaceAction {
     final int inset = getCellEditorInset(textEditorParent);
     if (inset > 0) {
       textEditorParent.addListener(SWT.Paint, new Listener() {
+        @Override
         @SuppressWarnings("synthetic-access")
         public void handleEvent(Event e) {
           Point textSize = textEditor.getSize();
@@ -348,6 +353,7 @@ public class RenameResourceAction extends WorkspaceAction {
     textEditor.setFont(navigatorTree.getFont());
     textEditorParent.setBackground(textEditor.getBackground());
     textEditor.addListener(SWT.Modify, new Listener() {
+      @Override
       @SuppressWarnings("synthetic-access")
       public void handleEvent(Event e) {
         Point textSize = textEditor.computeSize(SWT.DEFAULT, SWT.DEFAULT);
@@ -359,6 +365,7 @@ public class RenameResourceAction extends WorkspaceAction {
       }
     });
     textEditor.addListener(SWT.Traverse, new Listener() {
+      @Override
       @SuppressWarnings("synthetic-access")
       public void handleEvent(Event event) {
 
@@ -514,6 +521,7 @@ public class RenameResourceAction extends WorkspaceAction {
     final IWorkspace workspace = IDEWorkbenchPlugin.getPluginWorkspace();
     final IPath prefix = resource.getFullPath().removeLastSegments(1);
     IInputValidator validator = new IInputValidator() {
+      @Override
       public String isValid(String string) {
         if (resource.getName().equals(string)) {
           return IDEWorkbenchMessages.RenameResourceAction_nameMustBeDifferent;
@@ -646,6 +654,7 @@ public class RenameResourceAction extends WorkspaceAction {
     // rename
     // text widget to lose focus and trigger this method).
     Runnable query = new Runnable() {
+      @Override
       @SuppressWarnings("synthetic-access")
       public void run() {
         try {

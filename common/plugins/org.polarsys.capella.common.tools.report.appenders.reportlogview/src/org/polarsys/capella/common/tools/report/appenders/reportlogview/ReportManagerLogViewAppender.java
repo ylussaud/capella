@@ -32,6 +32,7 @@ import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.ui.views.markers.MarkerViewUtil;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
@@ -163,7 +164,7 @@ public final class ReportManagerLogViewAppender extends WriterAppender {
 						}
 					}
 				} catch (CoreException e) {
-					MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
+					MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), e.getLocalizedMessage(), e));
 				}
 			}
 		});
@@ -180,7 +181,7 @@ public final class ReportManagerLogViewAppender extends WriterAppender {
           marker.setAttribute(IMarker.SEVERITY, level); // violates IMarker API
           marker.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_HIGH);
         } catch (CoreException e) {
-          MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
+          MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), e.getLocalizedMessage(), e));
         }
         if (additions != null) {
           additions.modify(marker);

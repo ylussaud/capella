@@ -78,7 +78,7 @@ public class ValidationCommandLine extends AbstractWorkbenchCommandLine {
   @Override
   protected IStatus executeWithinWorkbench() {
     // load the AIRDs
-    MultiStatus status = new MultiStatus(Activator.PLUGIN_ID, IStatus.OK, Messages.validationStatus, null);
+    MultiStatus status = new MultiStatus(FrameworkUtil.getBundle(getClass()).getSymbolicName(), IStatus.OK, Messages.validationStatus, null);
     List<IFile> airdFiles = getAirdFilesFromInput();
     for (IFile file : airdFiles) {
       URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);

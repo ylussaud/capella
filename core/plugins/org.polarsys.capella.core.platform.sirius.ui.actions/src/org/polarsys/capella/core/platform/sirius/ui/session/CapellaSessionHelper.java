@@ -45,6 +45,7 @@ import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.statushandlers.StatusManager;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -60,8 +61,6 @@ import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
-import org.polarsys.capella.core.preferences.Activator;
 import org.polarsys.kitalpha.emde.xmi.UnknownEObject;
 
 /**
@@ -118,11 +117,11 @@ public class CapellaSessionHelper {
       IModel model = ILibraryManager.INSTANCE.getModel(ILibraryManager.DEFAULT_EDITING_DOMAIN, modelId);
       Collection<IModelIdentifier> unavailable = LibraryManagerExt.getAllUnavailableReferences(model);
       if (!unavailable.isEmpty()) {
-        MultiStatus status = new MultiStatus(CapellaActionsActivator.getDefault().getPluginId(), IStatus.ERROR,
+        MultiStatus status = new MultiStatus(FrameworkUtil.getBundle(CapellaSessionHelper.class).getSymbolicName(), IStatus.ERROR,
             Messages.CapellaSessionHelper_MissingLibraries_Message, null);
         for (IModelIdentifier identifier : unavailable) {
           status.add(
-              new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), identifier.toString()));
+              new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaSessionHelper.class).getSymbolicName(), identifier.toString()));
         }
         reportError(status);
         return status;
@@ -141,7 +140,7 @@ public class CapellaSessionHelper {
    * @return an IStatus with severity OK, WARNING or ERROR.
    */
   public static IStatus checkModelsFullCompliancy(URI uri) {
-    final String pluginId = CapellaActionsActivator.getDefault().getPluginId();
+    final String pluginId = FrameworkUtil.getBundle(CapellaSessionHelper.class).getSymbolicName();
     ResourceSet tempResourceSet = new ResourceSetImpl();
     tempResourceSet.getLoadOptions().put(GMFResource.OPTION_ABORT_ON_ERROR, Boolean.TRUE);
     tempResourceSet.getLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.FALSE);
@@ -264,14 +263,14 @@ public class CapellaSessionHelper {
   private static void reportError(final Diagnostic diagnostic) {
     IStatus status = Status.OK_STATUS;
     if (diagnostic.getChildren().isEmpty()) {
-      status = new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), diagnostic.getMessage());
+      status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaSessionHelper.class).getSymbolicName(), diagnostic.getMessage());
 
     } else {
-      status = new MultiStatus(CapellaActionsActivator.getDefault().getPluginId(), IStatus.ERROR,
+      status = new MultiStatus(FrameworkUtil.getBundle(CapellaSessionHelper.class).getSymbolicName(), IStatus.ERROR,
           diagnostic.getMessage(), null);
       for (Diagnostic identifier : diagnostic.getChildren()) {
         ((MultiStatus) status).add(
-            new Status(IStatus.ERROR, CapellaActionsActivator.getDefault().getPluginId(), identifier.getMessage()));
+            new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaSessionHelper.class).getSymbolicName(), identifier.getMessage()));
       }
     }
     reportError(status);
@@ -354,7 +353,7 @@ public class CapellaSessionHelper {
     if (errorMsg != null) {
       //Due to org.eclipse.ui.statushandlers.WorkbenchStatusDialogManager performing modification of 
       //displayed exception message, status message must be different of the exception message
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, errorMsg, new RuntimeException(exception));
+      return new Status(IStatus.ERROR, FrameworkUtil.getBundle(CapellaSessionHelper.class).getSymbolicName(), errorMsg, new RuntimeException(exception));
     }
     return Status.OK_STATUS;
   }

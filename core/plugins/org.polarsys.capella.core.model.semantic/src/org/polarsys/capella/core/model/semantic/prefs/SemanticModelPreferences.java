@@ -14,8 +14,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.InstanceScope;
-
-import org.polarsys.capella.core.model.semantic.internal.SemanticModelActivator;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  */
@@ -26,21 +25,21 @@ public class SemanticModelPreferences extends AbstractPreferenceInitializer impl
    */
   @Override
   public void initializeDefaultPreferences() {
-    new DefaultScope().getNode(SemanticModelActivator.PLUGIN_ID).putBoolean(ISemanticModelPreferences.KEY_SEMANTIC_MODE, true);
+    new DefaultScope().getNode(FrameworkUtil.getBundle(getClass()).getSymbolicName()).putBoolean(ISemanticModelPreferences.KEY_SEMANTIC_MODE, true);
   }
 
   /**
    * {@inheritDoc}
    */
   public void setSemanticMode(boolean enabled_p) {
-    new InstanceScope().getNode(SemanticModelActivator.PLUGIN_ID).putBoolean(ISemanticModelPreferences.KEY_SEMANTIC_MODE, enabled_p);
+    new InstanceScope().getNode(FrameworkUtil.getBundle(getClass()).getSymbolicName()).putBoolean(ISemanticModelPreferences.KEY_SEMANTIC_MODE, enabled_p);
   }
 
   /**
    * {@inheritDoc}
    */
   public boolean isSemanticMode() {
-    return Platform.getPreferencesService().getBoolean(SemanticModelActivator.PLUGIN_ID, ISemanticModelPreferences.KEY_SEMANTIC_MODE, false, null);
+    return Platform.getPreferencesService().getBoolean(FrameworkUtil.getBundle(getClass()).getSymbolicName(), ISemanticModelPreferences.KEY_SEMANTIC_MODE, false, null);
   }
 
 }

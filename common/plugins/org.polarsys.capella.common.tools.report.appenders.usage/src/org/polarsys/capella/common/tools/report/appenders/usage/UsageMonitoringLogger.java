@@ -17,6 +17,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.appenders.usage.preferences.IUsagePreferences;
 import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageLogger;
@@ -60,7 +61,7 @@ public class UsageMonitoringLogger {
         if (varValue == null) {
           // Log warning about undefined environment variable or system property
           UsageAppenderPlugin.getDefault().getLog()
-              .log(new Status(IStatus.WARNING, UsageAppenderPlugin.PLUGIN_ID, "Undefined environment variable: "
+              .log(new Status(IStatus.WARNING, FrameworkUtil.getBundle(getClass()).getSymbolicName(), "Undefined environment variable: "
                   + variableName + " found in -DUsagePath configuration. The log file will be put in the workspace."));
           unresolvableVar = true;
           break;

@@ -98,7 +98,7 @@ public class GenerateQueriesHandler extends AbstractUiHandler {
           }
           monitor.worked(1);
         }
-        return new Status(IStatus.WARNING, TestBusinessQueriesPlugin.PLUGIN_ID,
+        return new Status(IStatus.WARNING, FrameworkUtil.getBundle(getClass()).getSymbolicName(),
             "Generated in " + BQTestHelpers.getBqTestProject().getAbsolutePath());
       }
     };

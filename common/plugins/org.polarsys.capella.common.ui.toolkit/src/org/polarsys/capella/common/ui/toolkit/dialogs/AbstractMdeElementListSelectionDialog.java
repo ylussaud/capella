@@ -30,10 +30,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ISelectionStatusValidator;
 import org.eclipse.ui.dialogs.SelectionStatusDialog;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ui.toolkit.widgets.MdeFilteredList;
 
 /**
@@ -273,14 +272,14 @@ public abstract class AbstractMdeElementListSelectionDialog extends SelectionSta
       if (_validator != null) {
         status = _validator.validate(elements);
       } else {
-        status = new Status(IStatus.OK, PlatformUI.PLUGIN_ID, IStatus.OK, "", //$NON-NLS-1$
+        status = new Status(IStatus.OK, FrameworkUtil.getBundle(getClass()).getSymbolicName(), IStatus.OK, "", //$NON-NLS-1$
                             null);
       }
     } else {
       if (_filteredList.isEmpty()) {
-        status = new Status(IStatus.ERROR, PlatformUI.PLUGIN_ID, IStatus.ERROR, _emptyListMessage, null);
+        status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), IStatus.ERROR, _emptyListMessage, null);
       } else {
-        status = new Status(IStatus.ERROR, PlatformUI.PLUGIN_ID, IStatus.ERROR, _emptySelectionMessage, null);
+        status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), IStatus.ERROR, _emptySelectionMessage, null);
       }
     }
 

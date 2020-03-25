@@ -25,6 +25,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ui.services.helper.ViewerHelper;
 import org.polarsys.capella.common.ui.toolkit.browser.BrowserActivator;
 import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
@@ -163,7 +164,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
         result = getChildren(new EObjectWrapper((EObject) parentElement));
       }
     } catch (Exception exception) {
-      BrowserActivator.getDefault().getLog().log(new Status(IStatus.ERROR, BrowserActivator.PLUGIN_ID,
+      BrowserActivator.getDefault().getLog().log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(),
           "Error while getting children for " + parentElement, exception)); //$NON-NLS-1$
       result = new Object[0];
     }

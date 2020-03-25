@@ -24,11 +24,10 @@ import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceStore;
 import org.eclipse.jface.util.IPropertyChangeListener;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.prefs.BackingStoreException;
-
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.core.preferences.Activator;
 
 /**
  */
@@ -121,7 +120,7 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
       if ((resource instanceof IProject) && !isCanceled) {
         final ProjectScope project = new ProjectScope((IProject) resource);
         writeProperties(project);
-        project.getNode(Activator.PLUGIN_ID).flush();
+        project.getNode(FrameworkUtil.getBundle(getClass()).getSymbolicName()).flush();
       }
 
     } catch (BackingStoreException exception) {
@@ -161,7 +160,7 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
     for (String name : preferences) {
       try {
         setProperty(name, getString(name));
-        project.getNode(Activator.PLUGIN_ID).put(name, getString(name));
+        project.getNode(FrameworkUtil.getBundle(getClass()).getSymbolicName()).put(name, getString(name));
       } catch (CoreException e) {
         throw new IOException("PropertyStore.Cannot_write_resource_property" + name); //$NON-NLS-1$
       }

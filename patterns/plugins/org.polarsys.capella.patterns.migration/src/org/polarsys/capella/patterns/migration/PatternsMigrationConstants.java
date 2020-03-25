@@ -47,11 +47,11 @@ public class PatternsMigrationConstants extends MigrationConstants {
 
   // NEW XMI TYPE PREFIXES
   /** The type prefix for concepts of default pattern support */
-  public static final String DEFAULT_PATTERN_SUPPORT_PREFIX = PatternSupportPlugin.getDefault().getPluginId();
+  public static final String DEFAULT_PATTERN_SUPPORT_PREFIX = FrameworkUtil.getBundle(getClass()).getSymbolicName();
   /** The type prefix for model elements of default pattern support */
   public static final String DEFAULT_PATTERN_SUPPORT_GEN_PREFIX = DEFAULT_PATTERN_SUPPORT_PREFIX + ".gen"; //$NON-NLS-1$
   /** The type prefix for concepts of Kitalpha pattern support */
-  public static final String KITALPHA_PATTERN_SUPPORT_PREFIX = EmdePatternSupportPlugin.getDefault().getPluginId();
+  public static final String KITALPHA_PATTERN_SUPPORT_PREFIX = FrameworkUtil.getBundle(getClass()).getSymbolicName();
   /** The type prefix for model elements of Kitalpha pattern support */
   public static final String KITALPHA_PATTERN_SUPPORT_GEN_PREFIX = KITALPHA_PATTERN_SUPPORT_PREFIX + ".gen"; //$NON-NLS-1$
 
