@@ -55,8 +55,8 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Style;
 import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.helpers.LogExt2;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.platform.sirius.clipboard.Activator;
 import org.polarsys.capella.core.platform.sirius.clipboard.Messages;
 import org.polarsys.capella.core.platform.sirius.clipboard.util.BusinessHelper;
 import org.polarsys.capella.core.platform.sirius.clipboard.util.CapellaDiagramClipboard;
@@ -217,7 +217,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
   }
 
   protected void log(IStatus validityStatus) {
-    Activator.getDefault().getLog().log(validityStatus);
+    LogExt2.log(validityStatus);
   }
 
   /**

@@ -123,6 +123,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.flexibility.wizards.ui.FlexibilityColors;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.helpers.LogExt2;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManager;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
@@ -1471,7 +1472,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
       try {
         window.getActivePage().showView(CapellaCommonNavigator.ID, null, IWorkbenchPage.VIEW_ACTIVATE);
       } catch (PartInitException e) {
-        Activator.getDefault().getLog().log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), e.getLocalizedMessage(), e));
+        LogExt2.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), e.getLocalizedMessage(), e));
       }
       super.selectElementInCapellaExplorer(selection);
     }

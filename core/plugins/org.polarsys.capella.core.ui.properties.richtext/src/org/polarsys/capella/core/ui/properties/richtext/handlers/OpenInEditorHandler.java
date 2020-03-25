@@ -18,7 +18,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.osgi.framework.FrameworkUtil;
-import org.polarsys.capella.core.ui.properties.richtext.CapellaUIPropertiesRichtextPlugin;
+import org.polarsys.capella.common.helpers.LogExt2;
 import org.polarsys.capella.core.ui.properties.richtext.editor.CapellaMDERichTextEditor;
 import org.polarsys.kitalpha.richtext.common.intf.MDERichTextWidget;
 import org.polarsys.kitalpha.richtext.nebula.widget.toolbar.MDERichTextToolbarItemHandler;
@@ -39,7 +39,7 @@ public class OpenInEditorHandler implements MDERichTextToolbarItemHandler {
       activePage.openEditor(input, CapellaMDERichTextEditor.ID);
     } catch (PartInitException e) {
       Status status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), e.getMessage(), e);
-      CapellaUIPropertiesRichtextPlugin.getDefault().getLog().log(status);
+      LogExt2.log(status);
     }
 
   }

@@ -39,7 +39,7 @@ public class PropertyValueHelper {
 			return regElt.getFinders();
 		} catch (ModelScrutinyException e) {
 			Status status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), e.getMessage(), e);
-			Activator.getDefault().getLog().log(status);
+			LogExt2.log(status);
 		}
 		return Collections.emptySet();
 	}

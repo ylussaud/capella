@@ -44,6 +44,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
+import org.polarsys.capella.common.helpers.LogExt2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.helpers.validation.IValidationConstants;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
@@ -331,7 +332,7 @@ public class EPFValidationAction extends CapellaValidateAction {
             try {
               marker.setAttribute(IValidationConstants.TAG_PREFERENCE_EPF_FILE, epf);
             } catch (CoreException e) {
-              CapellaValidationUIActivator.getDefault().getLog().log(
+              LogExt2.log(
                   new Status(e.getStatus().getSeverity(), CapellaValidationUIActivator.getDefault().getBundle().getSymbolicName(), e.getMessage(), e));
             }
           }

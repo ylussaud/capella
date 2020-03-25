@@ -23,8 +23,8 @@ import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.helpers.LogExt2;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
-import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin;
 
 
 /**
@@ -66,7 +66,7 @@ public class DeleteHandler extends AbstractViewHandler {
         try {
           m.delete();
         } catch (CoreException exception) {
-          MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), exception.getMessage(), exception));
+          LogExt2.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), exception.getMessage(), exception));
         }
       }
     } 

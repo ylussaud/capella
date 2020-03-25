@@ -44,11 +44,11 @@ import org.polarsys.capella.common.ef.command.AbstractCompoundCommand;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.helpers.LogExt2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.re.ReNamedElement;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
-import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
@@ -514,7 +514,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
       // Show the Information view
       PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(MarkerView.VIEW_ID, null, IWorkbenchPage.VIEW_VISIBLE);
     } catch (PartInitException exception) {
-      MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), exception.getLocalizedMessage(), exception));
+      LogExt2.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), exception.getLocalizedMessage(), exception));
     }
   }
 

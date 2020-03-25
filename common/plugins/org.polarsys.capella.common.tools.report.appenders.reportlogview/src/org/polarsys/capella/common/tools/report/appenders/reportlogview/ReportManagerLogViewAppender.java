@@ -35,6 +35,7 @@ import org.eclipse.ui.views.markers.MarkerViewUtil;
 import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.helpers.LogExt2;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry.IMarkerModification;
 import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
@@ -164,7 +165,7 @@ public final class ReportManagerLogViewAppender extends WriterAppender {
 						}
 					}
 				} catch (CoreException e) {
-					MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), e.getLocalizedMessage(), e));
+					LogExt2.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), e.getLocalizedMessage(), e));
 				}
 			}
 		});
@@ -181,7 +182,7 @@ public final class ReportManagerLogViewAppender extends WriterAppender {
           marker.setAttribute(IMarker.SEVERITY, level); // violates IMarker API
           marker.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_HIGH);
         } catch (CoreException e) {
-          MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), e.getLocalizedMessage(), e));
+          LogExt2.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), e.getLocalizedMessage(), e));
         }
         if (additions != null) {
           additions.modify(marker);

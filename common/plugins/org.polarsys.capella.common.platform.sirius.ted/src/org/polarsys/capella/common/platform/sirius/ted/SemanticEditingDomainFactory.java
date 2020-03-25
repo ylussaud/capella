@@ -49,6 +49,7 @@ import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
 import org.polarsys.capella.common.ef.internal.command.WorkspaceCommandStackImpl;
+import org.polarsys.capella.common.helpers.LogExt2;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 
 /**
@@ -280,7 +281,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
                 // Hopefully, the rollback is complete before this exception is thrown.
                 // Log this exception as a warning.
                 String message = "Error while executing a command:"; //$NON-NLS-1$
-                PlatformSiriusTedActivator.getDefault().getLog().log(new Status(IStatus.WARNING, FrameworkUtil.getBundle(getClass()).getSymbolicName(), message, exception));
+                LogExt2.log(new Status(IStatus.WARNING, FrameworkUtil.getBundle(getClass()).getSymbolicName(), message, exception));
                 throw new RollbackException(new Status(IStatus.CANCEL, FrameworkUtil.getBundle(getClass()).getSymbolicName(), message, exception));
             }
         }

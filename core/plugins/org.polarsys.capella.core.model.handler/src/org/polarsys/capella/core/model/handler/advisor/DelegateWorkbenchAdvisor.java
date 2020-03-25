@@ -15,8 +15,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-
-import org.polarsys.capella.core.model.handler.ModelHandlerPlugin;
+import org.polarsys.capella.common.helpers.LogExt2;
 
 /**
  * See 'delegateWorkbenchAdvisor' extension point.<br>
@@ -86,7 +85,7 @@ public interface DelegateWorkbenchAdvisor {
 		}
 
 		private void logError(CoreException e) {
-			ModelHandlerPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, "org.polarsys.capella.core.model.handler", e.getMessage(), e));
+			LogExt2.log(new Status(IStatus.ERROR, "org.polarsys.capella.core.model.handler", e.getMessage(), e));
 		}
 	}
 

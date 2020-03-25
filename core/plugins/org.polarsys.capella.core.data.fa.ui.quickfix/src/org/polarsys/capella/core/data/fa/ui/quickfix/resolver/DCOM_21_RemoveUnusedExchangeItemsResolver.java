@@ -23,10 +23,10 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.helpers.LogExt2;
 import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionPort;
-import org.polarsys.capella.core.data.fa.ui.quickfix.FaQuickFixActivator;
 import org.polarsys.capella.core.data.fa.validation.functionPort.DCOM_21_UnusedExchangeItems;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
@@ -60,7 +60,7 @@ public class DCOM_21_RemoveUnusedExchangeItemsResolver extends AbstractCapellaMa
         marker.delete();
       } catch (CoreException e) {
         IStatus s = new Status(e.getStatus().getSeverity(), FrameworkUtil.getBundle(getClass()).getSymbolicName(), e.getStatus().getMessage(), e);
-        FaQuickFixActivator.getDefault().getLog().log(s);
+        LogExt2.log(s);
       }
     }
   }

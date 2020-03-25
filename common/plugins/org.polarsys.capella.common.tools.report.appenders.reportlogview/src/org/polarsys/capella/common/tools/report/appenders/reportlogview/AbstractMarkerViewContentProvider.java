@@ -23,6 +23,7 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.helpers.LogExt2;
 
 /**
  * The abstract base class for all content providers for the MarkerView in this package.
@@ -74,7 +75,7 @@ abstract class AbstractMarkerViewContentProvider implements ITreeContentProvider
       try {
         marker.delete();
       } catch (CoreException e) {
-        MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), e.getLocalizedMessage(), e));
+        LogExt2.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), e.getLocalizedMessage(), e));
       }
     }
     viewerRefresh.refresh();

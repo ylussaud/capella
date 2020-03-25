@@ -19,7 +19,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.osgi.framework.FrameworkUtil;
-import org.polarsys.capella.core.model.handler.ModelHandlerPlugin;
+import org.polarsys.capella.common.helpers.LogExt2;
 
 /**
  * Provides diagnosticians by searching the extension registry for DiagnosticianProviders 
@@ -42,7 +42,7 @@ public class PluggableDiagnosticianProvider extends AbstractDiagnosticianProvide
         AbstractDiagnosticianProvider provider = (AbstractDiagnosticianProvider) elems[0].createExecutableExtension("class"); //$NON-NLS-1$
         result = provider.getDiagnostician(adapterFactory_p, progressMonitor_p);
       } catch (CoreException e1) {
-        ModelHandlerPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), e1.getMessage(), e1));
+        LogExt2.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), e1.getMessage(), e1));
       }
     }
     if (null == result) {

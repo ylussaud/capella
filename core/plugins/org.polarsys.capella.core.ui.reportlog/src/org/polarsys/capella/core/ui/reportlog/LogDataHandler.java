@@ -19,6 +19,7 @@ import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.ui.PlatformUI;
 import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.helpers.LogExt2;
 
 public class LogDataHandler extends AbstractHandler {
 
@@ -42,7 +43,7 @@ public class LogDataHandler extends AbstractHandler {
     if (d.getReturnCode() == InputDialog.OK) {
       String value = d.getValue();
       IStatus status = new Status(IStatus.INFO, FrameworkUtil.getBundle(getClass()).getSymbolicName(), value);
-      ReportLogActivator.getDefault().getLog().log(status);
+      LogExt2.log(status);
     }
     return null;
   }

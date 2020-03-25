@@ -22,7 +22,7 @@ import javax.xml.parsers.SAXParserFactory;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.osgi.framework.FrameworkUtil;
-import org.polarsys.capella.common.helpers.HelperPlugin;
+import org.polarsys.capella.common.helpers.LogExt2;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
@@ -49,10 +49,10 @@ public class XMLValidationHelper {
     try {
       parser = SAXParserFactory.newInstance().newSAXParser();
     } catch (ParserConfigurationException exception) {
-      HelperPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, 
+      LogExt2.log(new Status(IStatus.ERROR, 
           FrameworkUtil.getBundle(getClass()).getSymbolicName(), exception.getMessage(), exception));
     } catch (SAXException exception) {
-      HelperPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, 
+      LogExt2.log(new Status(IStatus.ERROR, 
           FrameworkUtil.getBundle(getClass()).getSymbolicName(), exception.getMessage(), exception));
     } finally {
       if (parser == null){
@@ -72,12 +72,12 @@ public class XMLValidationHelper {
     try {
       parser.parse(new InputSource(new StringReader(text)), handler);
     } catch (IOException exception) {
-      HelperPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, 
+      LogExt2.log(new Status(IStatus.ERROR, 
           FrameworkUtil.getBundle(getClass()).getSymbolicName(), exception.getMessage(), exception));
     } catch (SAXException exception) {
       if (!(exception instanceof SAXParseException)){
         // SAXParseExceptions are stored already in the handler, so skip them here.
-        HelperPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, 
+        LogExt2.log(new Status(IStatus.ERROR, 
           FrameworkUtil.getBundle(getClass()).getSymbolicName(), exception.getMessage(), exception));
       }
     }
