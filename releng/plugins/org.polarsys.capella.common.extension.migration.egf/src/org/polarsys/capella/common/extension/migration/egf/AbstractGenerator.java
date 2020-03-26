@@ -10,11 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.common.extension.migration.egf;
 
-import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.ui.statushandlers.StatusManager;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  * Base class generator implementation.<br>
@@ -42,9 +41,9 @@ public abstract class AbstractGenerator {
       Throwable exception = diagnostic.getException();
       if (null != exception) {
         loggerMessage.append(exception.getMessage());
-        LogExt2.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), loggerMessage.toString(), exception));
+        Activator.getDefault().getLog().log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), loggerMessage.toString(), exception));
       } else {
-    	LogExt2.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), loggerMessage.toString(), exception));
+        Activator.getDefault().getLog().log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), loggerMessage.toString(), exception));
       }
       result = false;
     }

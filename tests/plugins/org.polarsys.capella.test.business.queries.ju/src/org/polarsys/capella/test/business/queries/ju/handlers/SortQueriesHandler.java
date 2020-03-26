@@ -26,12 +26,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.ui.services.commands.AbstractUiHandler;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.test.business.queries.ju.BQTestHelpers;
 import org.polarsys.capella.test.business.queries.ju.QueryResult;
-import org.polarsys.capella.test.business.queries.ju.TestBusinessQueriesPlugin;
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 
 /**
