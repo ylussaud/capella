@@ -18,12 +18,13 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.helpers.LogExt2;
 import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
 import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.PropertyValuePkg;
-import org.polarsys.capella.detachment.propertyvalue.Activator;
 import org.polarsys.kitalpha.model.common.scrutiny.analyzer.ModelScrutinyException;
 import org.polarsys.kitalpha.model.common.scrutiny.interfaces.IScrutinize;
 import org.polarsys.kitalpha.model.common.scrutiny.registry.ModelScrutinyRegistry;
@@ -38,7 +39,7 @@ public class PropertyValueHelper {
 			RegistryElement regElt = analysis.getRegistryElement(id);	
 			return regElt.getFinders();
 		} catch (ModelScrutinyException e) {
-			Status status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(), e.getMessage(), e);
+			Status status = new Status(IStatus.ERROR, FrameworkUtil.getBundle(PropertyValueHelper.class).getSymbolicName(), e.getMessage(), e);
 			LogExt2.log(status);
 		}
 		return Collections.emptySet();
