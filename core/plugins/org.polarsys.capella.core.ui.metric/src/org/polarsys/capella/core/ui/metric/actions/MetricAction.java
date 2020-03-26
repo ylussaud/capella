@@ -46,7 +46,6 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.ui.metric.IImageKeys;
-import org.polarsys.capella.core.ui.metric.MetricActivator;
 import org.polarsys.capella.core.ui.metric.MetricMessages;
 import org.polarsys.capella.core.ui.metric.core.DefaultFilter;
 import org.polarsys.capella.core.ui.metric.core.Metric;
@@ -61,7 +60,7 @@ public class MetricAction extends BaseSelectionListenerAction {
 
   public MetricAction() {
     super(MetricMessages.metricAction_lbl);
-    setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(MetricActivator.class).getSymbolicName(), IImageKeys.IMG_METRICS));
+    setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(getClass()).getSymbolicName(), IImageKeys.IMG_METRICS));
   }
 
   @Override

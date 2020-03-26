@@ -37,7 +37,6 @@ import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
-import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.Messages;
 import org.polarsys.capella.common.ui.ImageExt2;
 
@@ -117,7 +116,7 @@ public class QuickFixAllConstraintMarkersHandler extends QuickfixHandler {
     }
 
     if (!items.isEmpty()) {
-      ImageDescriptor image = ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), menuImage);
+      ImageDescriptor image = ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(getClass()).getSymbolicName(), menuImage);
       String text = Messages.MarkerView_QuickfixAll_Command_Name;
       MenuManager manager = new MenuManager(text, image, menuId);
       for (IContributionItem item : items) {

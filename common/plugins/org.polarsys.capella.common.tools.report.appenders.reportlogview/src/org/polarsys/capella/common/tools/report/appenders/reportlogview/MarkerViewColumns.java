@@ -494,9 +494,9 @@ class MarkerViewColumns {
               }
               
               if (hasAtLeastOneMultipleMarkerResolution(marker, resolutions)) {
-                return ImageExt2.getImage(FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), "quickfixAll-repository.png"); //$NON-NLS-1$
+                return ImageExt2.getImage(FrameworkUtil.getBundle(getClass()).getSymbolicName(), "quickfixAll-repository.png"); //$NON-NLS-1$
               }
-              return ImageExt2.getImage(FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), "quickfix.gif"); //$NON-NLS-1$
+              return ImageExt2.getImage(FrameworkUtil.getBundle(getClass()).getSymbolicName(), "quickfix.gif"); //$NON-NLS-1$
             }
           }
           return null;

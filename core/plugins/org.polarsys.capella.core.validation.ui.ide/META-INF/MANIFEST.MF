@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.validation.ui.ide;singleton:=true
 Bundle-Version: 1.4.1.qualifier
-Bundle-Activator: org.polarsys.capella.core.validation.ui.ide.PluginActivator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui;visibility:=reexport,
  org.eclipse.core.runtime,
@@ -19,7 +18,6 @@ Require-Bundle: org.eclipse.ui;visibility:=reexport,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Export-Package: org.polarsys.capella.core.validation.ui.ide,
- org.polarsys.capella.core.validation.ui.ide.internal.quickfix,
+Export-Package: org.polarsys.capella.core.validation.ui.ide.internal.quickfix,
  org.polarsys.capella.core.validation.ui.ide.messages,
  org.polarsys.capella.core.validation.ui.ide.quickfix

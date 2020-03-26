@@ -21,12 +21,12 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.model.IConstraintStatus;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.helpers.LogExt2;
 import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.data.fa.ui.quickfix.FaQuickFixActivator;
 import org.polarsys.capella.core.data.fa.ui.quickfix.generator.GenerateInterfacesResolutionGenerator;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
@@ -84,7 +84,7 @@ public abstract class GenerateInterfacesResolver extends AbstractCapellaMarkerRe
       try {
         marker.delete();
       } catch (CoreException e1) {
-        LogExt2.log(new Status(IStatus.ERROR, FaQuickFixActivator.getDefault().getBundle().getSymbolicName(),
+        LogExt2.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(),
                 e1.getStatus().getMessage(), e1.getStatus().getException()));
       }
     }

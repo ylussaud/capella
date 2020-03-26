@@ -24,7 +24,6 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
-import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
 /**

@@ -25,10 +25,7 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.osgi.framework.FrameworkUtil;
-import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin;
-import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.common.ui.actions.AbstractTigAction;
-import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
 /**

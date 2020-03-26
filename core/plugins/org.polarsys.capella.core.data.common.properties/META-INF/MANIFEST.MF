@@ -15,4 +15,3 @@ Export-Package: org.polarsys.capella.core.data.common.properties,
  org.polarsys.capella.core.data.common.properties.sections
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
-Bundle-Activator: org.polarsys.capella.core.data.common.properties.CommonPropertiesPlugin

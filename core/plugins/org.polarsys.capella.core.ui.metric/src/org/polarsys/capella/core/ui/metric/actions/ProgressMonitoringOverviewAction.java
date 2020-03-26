@@ -27,7 +27,6 @@ import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.ui.metric.IImageKeys;
-import org.polarsys.capella.core.ui.metric.MetricActivator;
 import org.polarsys.capella.core.ui.metric.MetricMessages;
 import org.polarsys.capella.core.ui.metric.dialog.ProgressMonitoringOverviewDialog;
 import org.polarsys.capella.core.ui.metric.utils.ProgressMonitoringPropagator;
@@ -38,7 +37,7 @@ public class ProgressMonitoringOverviewAction extends BaseSelectionListenerActio
    */
   public ProgressMonitoringOverviewAction() {
     super(MetricMessages.progressMonitoring_overviewAction_lbl);
-    setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(MetricActivator.class).getSymbolicName(), IImageKeys.IMG_METRICS));
+    setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(getClass()).getSymbolicName(), IImageKeys.IMG_METRICS));
   }
 
   /**

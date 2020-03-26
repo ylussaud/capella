@@ -43,7 +43,6 @@ import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.ui.metric.IImageKeys;
-import org.polarsys.capella.core.ui.metric.MetricActivator;
 import org.polarsys.capella.core.ui.metric.MetricMessages;
 import org.polarsys.capella.core.ui.metric.actions.ProgressSetDialog.PropagateChoice;
 import org.polarsys.capella.core.ui.metric.utils.ProgressMonitoringPropagator;
@@ -59,7 +58,7 @@ public class ProgressMonitoringSetAction extends BaseSelectionListenerAction {
    */
   public ProgressMonitoringSetAction() {
     super(MetricMessages.progressMonitoring_setAction_lbl);
-    setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(MetricActivator.class).getSymbolicName(), IImageKeys.IMG_PROGRESS_MONITORING));
+    setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(getClass()).getSymbolicName(), IImageKeys.IMG_PROGRESS_MONITORING));
   }
 
   

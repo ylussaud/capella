@@ -22,7 +22,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.osgi.framework.FrameworkUtil;
-import org.polarsys.capella.common.flexibility.wizards.Activator;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.ui.ImageExt2;
 
@@ -47,7 +46,7 @@ public class CopyTextRenderer extends TextRenderer {
     if (isCopyButton()) {
       copyButton = new Label(rootTextControl, SWT.NONE);
       copyButton.setToolTipText("Copy to clipboard");
-      copyButton.setImage(ImageExt2.getImage(FrameworkUtil.getBundle(Activator.class).getSymbolicName(), "full/etool16/copy.gif"));
+      copyButton.setImage(ImageExt2.getImage(FrameworkUtil.getBundle(getClass()).getSymbolicName(), "full/etool16/copy.gif"));
       copyButton.addMouseListener(new MouseListener() {
 
         @Override

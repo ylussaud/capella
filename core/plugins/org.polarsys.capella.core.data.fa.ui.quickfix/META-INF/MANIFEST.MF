@@ -27,7 +27,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.data.fa.ui.quicfix.helpers,
- org.polarsys.capella.core.data.fa.ui.quickfix,
  org.polarsys.capella.core.data.fa.ui.quickfix.generator,
  org.polarsys.capella.core.data.fa.ui.quickfix.resolver,
  org.polarsys.capella.core.data.fa.ui.quickfix.resolver.command

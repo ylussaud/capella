@@ -27,9 +27,9 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.helpers.LogExt2;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
-import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.model.links.helpers.LinksCommandRegistry;
@@ -419,10 +419,7 @@ public class FastLinkerManager {
 							IWorkbenchPage.VIEW_VISIBLE);
 		} catch (PartInitException exception) {
 			// An error occurred -> log it.
-			MarkerViewPlugin
-					.getDefault()
-					.getLog()
-					.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(),
+		  LogExt2.log(new Status(IStatus.ERROR, FrameworkUtil.getBundle(getClass()).getSymbolicName(),
 							exception.getLocalizedMessage(), exception));
 		}
 	}

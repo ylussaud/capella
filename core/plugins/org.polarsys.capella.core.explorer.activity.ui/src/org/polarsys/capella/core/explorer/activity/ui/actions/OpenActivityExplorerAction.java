@@ -16,7 +16,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ui.ImageExt2;
-import org.polarsys.capella.core.explorer.activity.ui.CapellaActivityExplorerActivator;
 import org.polarsys.capella.core.explorer.activity.ui.IImageKeys;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
@@ -31,7 +30,7 @@ public class OpenActivityExplorerAction extends BaseSelectionListenerAction {
    */
   public OpenActivityExplorerAction() {
     super(Messages.OpenActivityExplorerAction_Title);
-    setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(CapellaActivityExplorerActivator.class).getSymbolicName(), IImageKeys.IMG_MENU_ACTIVITY_EXPLORER));
+    setImageDescriptor(ImageExt2.getImageDescriptor(FrameworkUtil.getBundle(getClass()).getSymbolicName(), IImageKeys.IMG_MENU_ACTIVITY_EXPLORER));
   }
 
   /**

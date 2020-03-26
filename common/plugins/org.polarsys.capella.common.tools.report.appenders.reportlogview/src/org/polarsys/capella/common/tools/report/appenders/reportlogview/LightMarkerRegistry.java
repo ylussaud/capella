@@ -28,7 +28,9 @@ import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.ui.views.markers.MarkerViewUtil;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.helpers.LogExt2;
 import org.polarsys.capella.common.helpers.validation.IValidationConstants;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
@@ -318,8 +320,7 @@ public class LightMarkerRegistry implements IMarkerSource {
       try {
         result = getAttribute(attributeName);
       } catch (CoreException e) {
-        MarkerViewPlugin.getDefault().getLog()
-            .log(new Status(e.getStatus().getSeverity(), MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
+        LogExt2.log(new Status(e.getStatus().getSeverity(), FrameworkUtil.getBundle(getClass()).getSymbolicName(), e.getMessage(), e));
       }
       if (result instanceof Integer) {
         return ((Integer) result).intValue();
@@ -335,8 +336,7 @@ public class LightMarkerRegistry implements IMarkerSource {
       try {
         result = getAttribute(attributeName);
       } catch (CoreException e) {
-        MarkerViewPlugin.getDefault().getLog()
-            .log(new Status(e.getStatus().getSeverity(), MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
+        LogExt2.log(new Status(e.getStatus().getSeverity(), FrameworkUtil.getBundle(getClass()).getSymbolicName(), e.getMessage(), e));
       }
       if (result instanceof String) {
         return (String) result;
@@ -352,8 +352,7 @@ public class LightMarkerRegistry implements IMarkerSource {
       try {
         result = getAttribute(attributeName);
       } catch (CoreException e) {
-        MarkerViewPlugin.getDefault().getLog()
-            .log(new Status(e.getStatus().getSeverity(), MarkerViewPlugin.PLUGIN_ID, e.getMessage(), e));
+        LogExt2.log(new Status(e.getStatus().getSeverity(), FrameworkUtil.getBundle(getClass()).getSymbolicName(), e.getMessage(), e));
       }
       if (result instanceof Boolean) {
         return ((Boolean) result).booleanValue();

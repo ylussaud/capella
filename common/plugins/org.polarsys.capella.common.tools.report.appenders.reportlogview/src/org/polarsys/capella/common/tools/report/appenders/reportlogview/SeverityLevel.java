@@ -23,11 +23,11 @@ import org.polarsys.capella.common.ui.ImageExt2;
  */
 public enum SeverityLevel {
 
-  DEBUG("Debug", ImageExt2.getImage(FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), "debug.gif")), //$NON-NLS-1$ //$NON-NLS-2$
-  INFO("Info", ImageExt2.getImage(FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), "inform.gif")), //$NON-NLS-1$ //$NON-NLS-2$
-  WARNING("Warning", ImageExt2.getImage(FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), "warn.gif")), //$NON-NLS-1$ //$NON-NLS-2$
-  ERROR("Error", ImageExt2.getImage(FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), "error.gif")), //$NON-NLS-1$ //$NON-NLS-2$
-  FATAL("Fatal", ImageExt2.getImage(FrameworkUtil.getBundle(MarkerViewPlugin.class).getSymbolicName(), "fatal.gif")); //$NON-NLS-1$ //$NON-NLS-2$
+  DEBUG("Debug", ImageExt2.getImage(FrameworkUtil.getBundle(SeverityLevel.class).getSymbolicName(), "debug.gif")), //$NON-NLS-1$ //$NON-NLS-2$
+  INFO("Info", ImageExt2.getImage(FrameworkUtil.getBundle(SeverityLevel.class).getSymbolicName(), "inform.gif")), //$NON-NLS-1$ //$NON-NLS-2$
+  WARNING("Warning", ImageExt2.getImage(FrameworkUtil.getBundle(SeverityLevel.class).getSymbolicName(), "warn.gif")), //$NON-NLS-1$ //$NON-NLS-2$
+  ERROR("Error", ImageExt2.getImage(FrameworkUtil.getBundle(SeverityLevel.class).getSymbolicName(), "error.gif")), //$NON-NLS-1$ //$NON-NLS-2$
+  FATAL("Fatal", ImageExt2.getImage(FrameworkUtil.getBundle(SeverityLevel.class).getSymbolicName(), "fatal.gif")); //$NON-NLS-1$ //$NON-NLS-2$
 
   SeverityLevel(String representation, Image image) {
     this.representation = representation;

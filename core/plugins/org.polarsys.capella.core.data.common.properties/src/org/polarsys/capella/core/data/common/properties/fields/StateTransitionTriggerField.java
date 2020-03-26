@@ -36,7 +36,6 @@ import org.polarsys.capella.core.data.capellacommon.StateEvent;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacommon.TimeEvent;
 import org.polarsys.capella.core.data.capellacore.Constraint;
-import org.polarsys.capella.core.data.common.properties.CommonPropertiesPlugin;
 import org.polarsys.capella.core.data.common.properties.IImageKeys;
 import org.polarsys.capella.core.linkedtext.ui.CapellaEmbeddedLinkedTextEditorInput;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
@@ -112,7 +111,7 @@ public class StateTransitionTriggerField extends ContainmentTableField {
   @SuppressWarnings("synthetic-access")
   protected void createCustomActions(Composite parent) {
 
-    _timeEventBtn = createTableButton(parent, ImageExt2.getImage(FrameworkUtil.getBundle(CommonPropertiesPlugin.class).getSymbolicName(), IImageKeys.TIME_EVENT_IMG_16), new Runnable() {
+    _timeEventBtn = createTableButton(parent, ImageExt2.getImage(FrameworkUtil.getBundle(getClass()).getSymbolicName(), IImageKeys.TIME_EVENT_IMG_16), new Runnable() {
       @Override
       public void run() {
         handleStateEventButtonClick(CapellacommonPackage.Literals.TIME_EVENT);
@@ -120,7 +119,7 @@ public class StateTransitionTriggerField extends ContainmentTableField {
     });
     _timeEventBtn.setToolTipText("Create a Time Event");
 
-    _changeEventBtn = createTableButton(parent, ImageExt2.getImage(FrameworkUtil.getBundle(CommonPropertiesPlugin.class).getSymbolicName(), IImageKeys.CHANGE_EVENT_IMG_16), new Runnable() {
+    _changeEventBtn = createTableButton(parent, ImageExt2.getImage(FrameworkUtil.getBundle(getClass()).getSymbolicName(), IImageKeys.CHANGE_EVENT_IMG_16), new Runnable() {
       @Override
       public void run() {
         handleStateEventButtonClick(CapellacommonPackage.Literals.CHANGE_EVENT);

@@ -29,7 +29,6 @@ import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.flexibility.properties.schema.IRestraintProperty;
-import org.polarsys.capella.common.flexibility.wizards.Activator;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.ui.ImageExt2;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
@@ -81,7 +80,7 @@ public class BrowseRenderer extends TextRenderer {
     if (isBrowseButton()) {
       browse = new ToolItem(toolbar, SWT.PUSH);
       browse.setToolTipText(getBrowseText());
-      browse.setImage(ImageExt2.getImage(FrameworkUtil.getBundle(Activator.class).getSymbolicName(), "full/etool16/browse.gif"));
+      browse.setImage(ImageExt2.getImage(FrameworkUtil.getBundle(getClass()).getSymbolicName(), "full/etool16/browse.gif"));
       browse.addSelectionListener(new SelectionListener() {
 
         public void widgetSelected(SelectionEvent event) {
@@ -97,7 +96,7 @@ public class BrowseRenderer extends TextRenderer {
     if (isDeleteButton()) {
       delete = new ToolItem(toolbar, SWT.PUSH);
       delete.setToolTipText("Delete all elements");
-      delete.setImage(ImageExt2.getImage(FrameworkUtil.getBundle(Activator.class).getSymbolicName(), "full/etool16/delete_edit.gif"));
+      delete.setImage(ImageExt2.getImage(FrameworkUtil.getBundle(getClass()).getSymbolicName(), "full/etool16/delete_edit.gif"));
       delete.addSelectionListener(new SelectionListener() {
 
         public void widgetSelected(SelectionEvent event) {
