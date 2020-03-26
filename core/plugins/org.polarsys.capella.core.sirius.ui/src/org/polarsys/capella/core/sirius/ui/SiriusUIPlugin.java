@@ -70,30 +70,4 @@ public class SiriusUIPlugin extends AbstractUIActivator {
     return obj.getClass().getCanonicalName();
   }
 
-  /**
-   * Run an operation performing a save of a Sirius Session.
-   * 
-   * We log exceptions directly in the StatusManager to avoid update of LogListeners 
-   * registered on Eclipse Logger
-   * 
-   * This is mainly due to org.eclipse.sirius.ui.business.internal.dialect.LogThroughActiveDialectEditorLogListener
-   * displaying unwanted popup while session save
-   */
-  public void runSaveOperation(Shell activeShell, IRunnableWithProgress operation) {
-
-    try {
-      ProgressMonitorDialog monitor = new ProgressMonitorDialog(activeShell);
-      monitor.run(false, false, operation);
-
-    } catch (InvocationTargetException ite) {
-      // Log exception as it has been reported (not encapsulated through InvocationTargetException)
-      StatusManager.getManager().handle(
-          new Status(IStatus.ERROR, getBundleId(ite.getCause()), ite.getCause().getMessage(), ite.getCause()),
-          StatusManager.BLOCK);
-
-    } catch (InterruptedException ie) {
-      // Not really useful for InterruptedException, but this is to be consistent with InvocationTargetException
-      StatusManager.getManager().handle(new Status(IStatus.ERROR, getBundleId(ie), ie.getMessage(), ie));
-    }
-  }
 }

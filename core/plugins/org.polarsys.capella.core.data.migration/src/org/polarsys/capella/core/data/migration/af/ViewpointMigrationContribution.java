@@ -98,7 +98,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
 
   private IStatus checkAFM(IResource fileToMigrate, MigrationContext context, boolean checkVersion) {
 
-    MultiStatus status = new MultiStatus(AFIntegrationPlugin.getSymbolicName(), IStatus.OK,
+    MultiStatus status = new MultiStatus(FrameworkUtil.getBundle(AFIntegrationPlugin.class).getSymbolicName(), IStatus.OK,
         "Some viewpoints are missing", null);
 
     try {
@@ -121,7 +121,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
         // We check for additional missing viewpoints
         for (String id : viewpointUsages.keySet()) {
           if (ViewpointManager.getViewpoint(id) == null) {
-            status.add(new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
+            status.add(new Status(IStatus.ERROR, FrameworkUtil.getBundle(AFIntegrationPlugin.class).getSymbolicName(),
                 "The viewpoint '" + id + "' is missing"));
           }
         }
@@ -130,7 +130,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
       }
     } catch (Exception e) {
       e.printStackTrace();
-      status.add(new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(), e.getMessage()));
+      status.add(new Status(IStatus.ERROR, FrameworkUtil.getBundle(AFIntegrationPlugin.class).getSymbolicName(), e.getMessage()));
       return status;
     }
 

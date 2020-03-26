@@ -11,5 +11,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.common.mdsofa.common;visibility:=reexport
 Export-Package: org.polarsys.capella.shared.id.handler
 Bundle-ActivationPolicy: lazy
-Bundle-Activator: org.polarsys.capella.shared.id.handler.IdHandlerPlugin
 Bundle-Localization: plugin

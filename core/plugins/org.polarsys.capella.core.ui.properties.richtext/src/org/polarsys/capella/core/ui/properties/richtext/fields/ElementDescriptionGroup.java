@@ -46,12 +46,8 @@ import org.polarsys.kitalpha.richtext.widget.helper.MDERichtextWidgetHelper;
  * @author Joao Barata
  */
 public abstract class ElementDescriptionGroup {
-  
     
   private static final String FAMILY_DEFERRED_REFRESH = FrameworkUtil.getBundle(ElementDescriptionGroup.class).getSymbolicName() + ".refreshJobFamily";
-
-  private static final String FAMILY_DEFERRED_REFRESH = CapellaUIPropertiesRichtextPlugin.PLUGIN_ID
-      + ".refreshJobFamily";
 
   /**
    * Current edited semantic element.

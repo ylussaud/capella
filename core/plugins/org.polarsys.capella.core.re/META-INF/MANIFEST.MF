@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.re;singleton:=true
 Bundle-Version: 1.4.1.qualifier
-Bundle-Activator: org.polarsys.capella.core.re.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.commands,
@@ -19,9 +18,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.ui.properties
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: 
- org.polarsys.capella.core.re,
- org.polarsys.capella.core.re.activities,
+Export-Package: org.polarsys.capella.core.re.activities,
  org.polarsys.capella.core.re.commands,
  org.polarsys.capella.core.re.delete,
  org.polarsys.capella.core.re.handlers,

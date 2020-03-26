@@ -78,6 +78,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
@@ -95,7 +96,6 @@ import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.ShapeUtil;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
-import org.polarsys.capella.core.transition.diagram.Activator;
 import org.polarsys.capella.core.transition.diagram.handlers.DiagramDescriptionHelper;
 import org.polarsys.capella.core.transition.diagram.helpers.TraceabilityHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -415,7 +415,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
    * @return
    */
   protected Shell getShell() {
-    return Activator.getDefault().getWorkbench().getActiveWorkbenchWindow().getShell();
+    return PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
   }
 
   /**

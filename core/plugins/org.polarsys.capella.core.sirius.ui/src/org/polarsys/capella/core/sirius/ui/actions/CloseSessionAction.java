@@ -12,13 +12,15 @@ package org.polarsys.capella.core.sirius.ui.actions;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.osgi.util.NLS;
@@ -33,13 +35,14 @@ import org.eclipse.ui.ISaveablePart2;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.ui.statushandlers.StatusManager;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.ef.command.AbstractNonDirtyingCommand;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
 import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
 import org.polarsys.capella.core.sirius.ui.Messages;
-import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
 import org.polarsys.capella.core.sirius.ui.closeproject.SessionCloseManager;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
@@ -96,7 +99,35 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
     IRunnableWithProgress closeSessionOperation = new CloseSessionOperation(sessions);
 
     Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-    SiriusUIPlugin.getDefault().runSaveOperation(activeShell, closeSessionOperation);
+    runSaveOperation(activeShell, closeSessionOperation);
+  }
+  
+
+  /**
+   * Run an operation performing a save of a Sirius Session.
+   * 
+   * We log exceptions directly in the StatusManager to avoid update of LogListeners 
+   * registered on Eclipse Logger
+   * 
+   * This is mainly due to org.eclipse.sirius.ui.business.internal.dialect.LogThroughActiveDialectEditorLogListener
+   * displaying unwanted popup while session save
+   */
+  public void runSaveOperation(Shell activeShell, IRunnableWithProgress operation) {
+
+    try {
+      ProgressMonitorDialog monitor = new ProgressMonitorDialog(activeShell);
+      monitor.run(false, false, operation);
+
+    } catch (InvocationTargetException ite) {
+      // Log exception as it has been reported (not encapsulated through InvocationTargetException)
+      StatusManager.getManager().handle(
+          new Status(IStatus.ERROR, FrameworkUtil.getBundle(ite.getCause().getClass()).getSymbolicName(), ite.getCause().getMessage(), ite.getCause()),
+          StatusManager.BLOCK);
+
+    } catch (InterruptedException ie) {
+      // Not really useful for InterruptedException, but this is to be consistent with InvocationTargetException
+      StatusManager.getManager().handle(new Status(IStatus.ERROR, FrameworkUtil.getBundle(ie.getClass()).getSymbolicName(), ie.getMessage(), ie));
+    }
   }
   
   /**

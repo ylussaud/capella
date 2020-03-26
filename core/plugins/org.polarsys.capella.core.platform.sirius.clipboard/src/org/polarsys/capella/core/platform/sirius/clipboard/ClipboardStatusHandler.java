@@ -18,6 +18,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.statushandlers.AbstractStatusHandler;
 import org.eclipse.ui.statushandlers.StatusAdapter;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -34,7 +35,7 @@ public class ClipboardStatusHandler extends AbstractStatusHandler {
           Shell activeShell = window.getShell();
           Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.DIAGRAM);
           logger.warn(new EmbeddedMessage(status.getMessage(), IReportManagerDefaultComponents.DIAGRAM), status.getException());
-          MessageDialog.openWarning(activeShell, Activator.LABEL, status.getMessage());
+          MessageDialog.openWarning(activeShell, Messages.Activator_Label, status.getMessage());
         }
       }
     }

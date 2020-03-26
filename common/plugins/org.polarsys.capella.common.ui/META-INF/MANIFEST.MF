@@ -35,5 +35,5 @@ Export-Package: org.polarsys.capella.common.ui,
  org.polarsys.capella.common.ui.toolkit.viewers.transfer,
  org.polarsys.capella.common.ui.toolkit.widgets.filter,
  org.polarsys.capella.common.ui.toolkit.widgets.handler
-Bundle-Activator: org.polarsys.capella.common.ui.MdeCommonUiActivator
 Bundle-Localization: plugin
+Bundle-Activator: org.polarsys.capella.common.ui.MdeCommonUiActivator

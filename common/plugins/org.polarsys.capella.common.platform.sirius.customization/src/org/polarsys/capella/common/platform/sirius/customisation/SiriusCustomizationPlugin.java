@@ -22,6 +22,7 @@ import org.eclipse.gmf.runtime.notation.JumpLinkType;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
+import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
@@ -109,7 +110,7 @@ public class SiriusCustomizationPlugin extends AbstractUIPlugin {
     // ----------------
     
     // Preference customization for plugin "org.eclipse.sirius.common.ui"
-    defaultScope = DefaultScope.INSTANCE.getNode(SiriusTransPlugin.PLUGIN_ID);
+    IEclipsePreferences transPreferences = DefaultScope.INSTANCE.getNode(SiriusTransPlugin.PLUGIN_ID);
     // Disable Sirius Pre-commit listener behavior since Capella has the same one.
     transPreferences.putBoolean(CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, false);
 

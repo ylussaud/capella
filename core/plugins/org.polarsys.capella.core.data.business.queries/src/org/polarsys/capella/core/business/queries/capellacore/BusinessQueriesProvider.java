@@ -19,15 +19,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.osgi.util.NLS;
 import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.common.helpers.LogExt2;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
-import org.polarsys.capella.core.business.queries.BusinessQueriesPlugin;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 
 
@@ -89,8 +88,7 @@ public class BusinessQueriesProvider {
               businessQueriesMap.put(key, query);
             } else {
               // keep the existing key and log error.
-              ILog log = BusinessQueriesPlugin.getDefault().getLog();
-              log.log(new Status(IStatus.WARNING, FrameworkUtil.getBundle(getClass()).getSymbolicName(),
+              LogExt2.log(new Status(IStatus.WARNING, FrameworkUtil.getBundle(getClass()).getSymbolicName(),
                   NLS.bind(Messages.BusinessQueriesProvider_duplicateQueryContributionKey,
                       new Object[] { key.getKey(), key.getValue(), query.getClass().getName(), dup.getClass().getName() })));
             }
