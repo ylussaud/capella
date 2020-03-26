@@ -11,9 +11,8 @@
 
 package org.polarsys.capella.patterns.migration;
 
-import org.eclipse.emf.diffmerge.patterns.support.PatternSupportPlugin;
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.core.data.migration.MigrationConstants;
-import org.polarsys.kitalpha.patterns.emde.EmdePatternSupportPlugin;
 
 /**
  * Constants involved in the migration of pattern elements.
@@ -47,11 +46,11 @@ public class PatternsMigrationConstants extends MigrationConstants {
 
   // NEW XMI TYPE PREFIXES
   /** The type prefix for concepts of default pattern support */
-  public static final String DEFAULT_PATTERN_SUPPORT_PREFIX = FrameworkUtil.getBundle(getClass()).getSymbolicName();
+  public static final String DEFAULT_PATTERN_SUPPORT_PREFIX = FrameworkUtil.getBundle(PatternsMigrationConstants.class).getSymbolicName();
   /** The type prefix for model elements of default pattern support */
   public static final String DEFAULT_PATTERN_SUPPORT_GEN_PREFIX = DEFAULT_PATTERN_SUPPORT_PREFIX + ".gen"; //$NON-NLS-1$
   /** The type prefix for concepts of Kitalpha pattern support */
-  public static final String KITALPHA_PATTERN_SUPPORT_PREFIX = FrameworkUtil.getBundle(getClass()).getSymbolicName();
+  public static final String KITALPHA_PATTERN_SUPPORT_PREFIX = FrameworkUtil.getBundle(PatternsMigrationConstants.class).getSymbolicName();
   /** The type prefix for model elements of Kitalpha pattern support */
   public static final String KITALPHA_PATTERN_SUPPORT_GEN_PREFIX = KITALPHA_PATTERN_SUPPORT_PREFIX + ".gen"; //$NON-NLS-1$
 
