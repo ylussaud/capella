@@ -1,4 +1,4 @@
-            
+
 = How to import a Capella Project Example? =
 
 # '''File -> New -> Example ...'''
